@@ -93,12 +93,18 @@
   display: none;
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.5px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(1.5px);
 }
 
 .modal-container {
   position: relative;
   height: 100vh;
   width: 100%;
+}
+
+.modal input {
+  border: 1px solid;
+  border-radius: 3px;
+  @apply bg-foreground text-background border-background;
 }

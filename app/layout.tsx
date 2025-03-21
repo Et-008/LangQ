@@ -52,7 +52,7 @@ export default function RootLayout({
                 </div>
               </nav>
               <div className="w-full grow p-5 flex justify-center">
-                <div className="flex flex-col gap-20 max-w-6xl p-5">
+                <div className="flex flex-col gap-20 max-w-6xl p-5 grow">
                   {children}
                 </div>
               </div>
