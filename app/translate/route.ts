@@ -31,7 +31,7 @@ export async function POST(request: Request, response: Response) {
     const messages = [
       {
         role: "You are a localisation translation system",
-        content: {
+        content: JSON.stringify({
           task: "localize the given values for the given languages. Give output in a json file. Just the json output, no explanation",
           value: textToTranslate,
           languages: ["en", "es", "ar"],
@@ -95,7 +95,7 @@ export async function POST(request: Request, response: Response) {
               },
             },
           },
-        },
+        }),
       },
     ];
 
