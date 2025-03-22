@@ -3,6 +3,7 @@
 import { CustomModal } from "@/components/modal/modal";
 import { createClient } from "@/utils/supabase/client";
 import { ParamValue } from "next/dist/server/request/params";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
   ReactNode,
@@ -21,11 +22,17 @@ interface localiseKey {
   placeholders?: null;
 }
 
+interface Project {
+  name: string;
+  user_id: string;
+}
+
 export default function Page() {
   const { projectId } = useParams();
   const [isOpen, setIsOpen] = useState(false);
 
   const [keys, setKeys] = useState<localiseKey[] | null>(null);
+  const [project, setProject] = useState<Project | null>(null);
 
   const [editKey, setEditKey] = useState<localiseKey>({
     name: "",
@@ -34,6 +41,13 @@ export default function Page() {
   const supabase = createClient();
 
   const getData = () => {
+    supabase
+      .from("projects")
+      .select()
+      .eq("id", projectId)
+      .then(({ data }) => {
+        setProject(data?.[0]);
+      });
     supabase
       .from("keys")
       .select()
@@ -125,6 +139,9 @@ export default function Page() {
           />
         </CustomModal>
       )}
+      <Link href={"/projects"}>Projects</Link>
+      <span className="">{" > "}</span>
+      {project?.name}
       <ul role="list" className="divide-y divide-gray-100">
         {items}
         <li

@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import { CustomModal } from "@/components/modal/modal";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -54,6 +55,7 @@ export default function Page() {
 
   return (
     <div className="px-4 py-12 sm:px-6 lg:px-8">
+      <Link href={"/projects"}>Projects</Link>
       {isOpen && (
         <CustomModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
           <div className="modal min-h-80 min-w-80">
