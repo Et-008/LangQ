@@ -39,7 +39,9 @@ export default function Page() {
   }, [user]);
 
   function createProject() {
-    const projectName = document.getElementById("projectName")?.value;
+    const projectName = (
+      document.getElementById("projectName") as HTMLInputElement
+    )?.value;
 
     supabase
       .from("projects")

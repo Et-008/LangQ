@@ -21,7 +21,9 @@
     "prettier": "^3.3.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "together-ai": "^0.15.1",
+    "react-modal-video": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "22.10.2",

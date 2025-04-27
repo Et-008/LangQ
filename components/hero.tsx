@@ -3,8 +3,8 @@ import SupabaseLogo from "./supabase-logo";
 
 export default function Header() {
   return (
-    <div className="flex flex-col gap-16 items-center">
-      <h1 className="sr-only">LanQ - translator for your business</h1>
+    <div className="flex flex-col gap-16 items-center justify-center min-h-screen">
+      <h1 className="sr-only">LangQ - translator for your business</h1>
       <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center">
         Translate{" "}
         <a
@@ -26,12 +26,15 @@ export default function Header() {
         </a>{" "}
         Unlock Global Reach.
       </p>
-      <div className="flex gap-8 justify-center items-center max-w-2xl text-center">
+      <div className="flex flex-col gap-8 justify-center items-center max-w-2xl text-center">
+        {/* <p>Welcome to LanQ, the next generation of localization software.</p> */}
         <p>
-          Welcome to [Your Company Name], the next generation of localization
-          software. We empower product and service companies to seamlessly
-          connect with customers worldwide by providing high-speed, highly
-          accurate translations in any language.
+          At{" "}
+          <a href="/" className="font-bold hover:underline">
+            LangQ
+          </a>{" "}
+          we empower companies to seamlessly connect with customers worldwide by
+          providing high-speed, highly accurate translations in any language.
         </p>
       </div>
       <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent my-8" />
