@@ -10,8 +10,50 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "LangQ",
+  description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
+  keywords: ["LangQ", "Translate", "Internationalisation"],
+  authors: [{ name: "ArunEt" }, { name: "Arun", url: "https://et-008.in/" }],
+  creator: "Arun Et",
+  publisher: "Arun Et",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
+  },
+  openGraph: {
+    title: "LangQ",
+    description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
+    url: defaultUrl,
+    siteName: "LangQ",
+    images: [
+      {
+        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/og-image.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9vZy1pbWFnZS5wbmciLCJpYXQiOjE3NDU3NzcwOTMsImV4cCI6MTgwODg0OTA5M30.6bDWBfm9Qike3XtOqJiOR6n1Ze0hswEKLRLbNFPrRPA", // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/og-image.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9vZy1pbWFnZS5wbmciLCJpYXQiOjE3NDU3NzcwOTMsImV4cCI6MTgwODg0OTA5M30.6bDWBfm9Qike3XtOqJiOR6n1Ze0hswEKLRLbNFPrRPA", // Must be an absolute URL
+        width: 1800,
+        height: 1600,
+        alt: "My custom alt",
+      },
+    ],
+  },
+  icons: {
+    icon: [
+      { url: 'https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0' },
+      new URL('/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0', 'https://ymsreanckxyrthosfqiq.supabase.co'),
+      { url: 'https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0', media: '(prefers-color-scheme: dark)' },
+    ],
+    shortcut: ['/shortcut-icon.png'],
+    apple: [
+      { url: 'https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0' },
+      { url: 'https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0', sizes: '180x180', type: 'image/png' },
+    ]
+  },
 };
 
 const geistSans = Geist({
