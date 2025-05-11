@@ -12,11 +12,14 @@ import { ThemeSwitcher } from "../theme-switcher";
 
 const Header = () => {
   const [user, setUser] = useState<any>();
+  const [loading, setLoading] = useState(false);
   const supabase = createClient();
 
   const getUser = () => {
+    setLoading(true);
     supabase.auth.getUser().then((res) => {
       setUser(res?.data?.user);
+      setLoading(false);
     });
   };
   // Navbar toggle
@@ -55,11 +58,11 @@ const Header = () => {
   const usePathName = usePathname();
 
   return user ? (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 ml-auto">
       Hey, {user.email}!
       <ThemeSwitcher />
       <form action={signOutAction}>
-        <Button type="submit" variant={"outline"}>
+        <Button type="submit" variant="outline">
           Sign out
         </Button>
       </form>

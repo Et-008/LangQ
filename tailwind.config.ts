@@ -74,6 +74,9 @@ const config = {
           light: "#F0F2F9",
         },
       },
+      maxWidth: {
+        "1/2": "50%",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

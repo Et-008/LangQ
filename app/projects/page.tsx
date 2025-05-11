@@ -56,8 +56,10 @@ export default function Page() {
   }
 
   return (
-    <div className="px-4 py-12 sm:px-6 lg:px-8">
-      <Link href={"/projects"}>Projects</Link>
+    <div className="px-4 py-4 sm:px-6 lg:px-8">
+      <Link className="text-[12px]" href={"/projects"}>
+        Projects
+      </Link>
       {isOpen && (
         <CustomModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
           <div className="modal min-h-80 min-w-80">
@@ -115,7 +117,7 @@ export default function Page() {
           );
         })
       ) : (
-        <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center cursor-pointer">
+        <div className="text-center text-sm p-3 m-5 px-5 rounded-md text-foreground flex gap-3 items-center cursor-pointer">
           No Projects yet, please create one
         </div>
       )}
