@@ -61,7 +61,7 @@ function TranslatedData({ translatedKey }: { translatedKey: localiseKey }) {
 
   return (
     <div className="grid gap-3 mt-5">
-      {Object.entries(translation?.translations)?.map(([key, value]) => {
+      {Object.entries(translation?.translations || {})?.map(([key, value]) => {
         return (
           <div
             key={`${key}${translatedKey?.id}`}
