@@ -59,7 +59,7 @@ export default function Page() {
       .select()
       .eq("project_id", projectId)
       .then(({ data }) => {
-        setKeys(data);
+        setKeys(data || []);
       });
   };
 
