@@ -76,6 +76,19 @@ export default function Page() {
     toggleModal();
   }
 
+  function deleteKey({ key }: { key: localiseKey }) {
+    console.log("deletedKey => ", key);
+    supabase
+      .from("keys")
+      .delete()
+      .eq("project_id", projectId)
+      .eq("id", key?.id)
+      .then((res) => {
+        getData();
+        alert(`${key?.name} deleted successfully`);
+      });
+  }
+
   function closeModal() {
     setIsOpen(false);
     setEditKey(null);
@@ -131,7 +144,7 @@ export default function Page() {
               </span>
               <span
                 className="cursor-pointer"
-                onClick={() => openModal({ key })}
+                onClick={() => deleteKey({ key })}
               >
                 <svg
                   width="15"
