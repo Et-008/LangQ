@@ -157,7 +157,7 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-        <div>
+        <div className="flex gap-5">
           <ThemeSwitcher />
           <Button
             asChild
@@ -165,7 +165,7 @@ const Header = () => {
             variant={"outline"}
             className="group relative"
           >
-            <Link href="/sign-in">Sign in</Link>
+            <Link href="/sign-in">Log in</Link>
           </Button>
           <Button
             asChild
@@ -173,7 +173,7 @@ const Header = () => {
             variant={"default"}
             className="group relative"
           >
-            <Link href="/sign-up">Sign up</Link>
+            <Link href="/sign-up">Get started for free</Link>
           </Button>
         </div>
       </div>

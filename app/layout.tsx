@@ -2,11 +2,14 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { createClient } from "@/utils/supabase/server";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
+
+let User: any;
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -75,11 +78,20 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+async function getUser() {
+  const supabase = await createClient();
+
+  supabase.auth.getUser().then((res) => {
+    User = res?.data?.user ? JSON.stringify(res?.data?.user) : null;
+  });
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  getUser();
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body
@@ -95,7 +107,9 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-5 items-center">
               <Navigation />
-              <div className="main-div w-full grow p-5 flex justify-center">
+              <div
+                className={`${User ? "" : "main-div"} w-full grow p-5 flex justify-center`}
+              >
                 <div className="flex flex-col gap-20 max-w-6xl p-5 grow">
                   {children}
                 </div>

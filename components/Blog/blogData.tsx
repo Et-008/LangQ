@@ -3,17 +3,18 @@ import { Blog } from "@/types/blog";
 const blogData: Blog[] = [
   {
     id: 1,
-    title: "Best UI components for modern websites",
+    title:
+      "Streamlining Multiplatform Localization: Unifying iOS and Android Keys",
     paragraph:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.",
+      "In the world of mobile app development, localization is essential for reaching a global audience. However, managing separate localization files for iOS and Android can lead to redundancy and increased maintenance efforts. One effective strategy to mitigate this is by using the same keys for both platforms.",
     image: "/images/blog/blog-01.jpg",
     author: {
-      name: "Samuyl Joshi",
+      name: "Arun Et",
       image: "/images/blog/author-01.png",
-      designation: "Graphic Designer",
+      designation: "Cotent writer",
     },
     tags: ["creative"],
-    publishDate: "2025",
+    publishDate: "11/05/2025",
   },
   {
     id: 2,

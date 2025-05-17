@@ -8,7 +8,7 @@ export default function Header() {
       <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center">
         Translate{" "}
         <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
+          href="/"
           target="_blank"
           className="font-bold hover:underline"
           rel="noreferrer"
@@ -17,7 +17,7 @@ export default function Header() {
         </a>{" "}
         &{" "}
         <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
+          href="/"
           target="_blank"
           className="font-bold hover:underline"
           rel="noreferrer"
