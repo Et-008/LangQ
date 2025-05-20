@@ -10,12 +10,12 @@ import {
   ReactNode,
   useEffect,
   useState,
-  useRef,
   ChangeEventHandler,
   ChangeEvent,
 } from "react";
 import TranslatedData from "./translatedData";
 import { Button } from "@/components/ui/button";
+import PopupComponent from "@/components/PopupComponent";
 
 interface localiseKey {
   id?: number;
@@ -123,66 +123,92 @@ export default function Page() {
           <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
             <p className="text-sm/6">{key?.value}</p>
             <span className="flex gap-1">
-              <span
-                className="cursor-pointer"
-                onClick={() => openModal({ key })}
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-              <span
-                className="cursor-pointer"
-                onClick={() => deleteKey({ key })}
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect width="24" height="24" />
-                  <path
-                    d="M5 7.5H19L18 21H6L5 7.5Z"
-                    stroke="currentColor"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M15.5 9.5L15 19"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 9.5V19"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8.5 9.5L9 19"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M16 5H19C20.1046 5 21 5.89543 21 7V7.5H3V7C3 5.89543 3.89543 5 5 5H8M16 5L15 3H9L8 5M16 5H8"
-                    stroke="currentColor"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+              <span>
+                <PopupComponent
+                  activator={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                      />
+                    </svg>
+                  }
+                  content={
+                    <div className="flex flex-col gap-3">
+                      <span
+                        className="flex gap-2 cursor-pointer items-center"
+                        onClick={() => openModal({ key })}
+                      >
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 15 15"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
+                            fill="currentColor"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        Edit
+                      </span>
+                      <span
+                        className="flex gap-1 cursor-pointer items-center"
+                        onClick={() => deleteKey({ key })}
+                      >
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="24" height="24" />
+                          <path
+                            d="M5 7.5H19L18 21H6L5 7.5Z"
+                            stroke="currentColor"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M15.5 9.5L15 19"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M12 9.5V19"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.5 9.5L9 19"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M16 5H19C20.1046 5 21 5.89543 21 7V7.5H3V7C3 5.89543 3.89543 5 5 5H8M16 5L15 3H9L8 5M16 5H8"
+                            stroke="currentColor"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        Delete
+                      </span>
+                    </div>
+                  }
+                />
               </span>
             </span>
           </div>

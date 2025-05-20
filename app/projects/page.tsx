@@ -5,6 +5,8 @@ import { CustomModal } from "@/components/modal/modal";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { languagesArray } from "@/constants/Languages";
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -38,16 +40,36 @@ export default function Page() {
     }
   }, [user]);
 
+  // Pass the checkbox name to the function
+  function getCheckedBoxes() {
+    var checkboxes: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll("input:checked");
+    var checkboxesChecked = [];
+    // loop over them all
+    for (var i = 0; i < checkboxes.length; i++) {
+      // And stick the checked ones onto an array...
+      if (checkboxes[i]?.checked) {
+        checkboxesChecked.push(checkboxes[i]?.id);
+      }
+    }
+    // Return the array if it is non-empty, or null
+    return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+  }
+
   function createProject() {
     const projectName = (
       document.getElementById("projectName") as HTMLInputElement
     )?.value;
+    const checkedBoxes = getCheckedBoxes();
+
+    console.log(checkedBoxes);
 
     supabase
       .from("projects")
       .insert({
         user_id: user?.email,
         name: projectName || `Test ${projects?.length}`,
+        selectedLanguages: checkedBoxes?.length ? checkedBoxes : ["en"],
       })
       .then((res) => {
         getProjects();
@@ -62,23 +84,55 @@ export default function Page() {
       </Link>
       {isOpen && (
         <CustomModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <div className="modal min-h-80 min-w-80">
+          <div className="modal min-h-80 min-w-80 flex flex-col">
             <h1 className="text-3xl font-bold">Add New Project</h1>
-            <div className="py-6 grid gap-5">
-              <p className="">
-                <span className="text-sm/6 font-semibold">Name</span>
-                <input
-                  id="projectName"
-                  title="Name"
-                  type="text"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </p>
+            <div className="py-6 flex gap-3">
+              <span className="text-sm/6 font-semibold required">Name</span>
+              <input
+                id="projectName"
+                title="Name"
+                required
+                type="text"
+                className="input input-bordered w-full max-w-xs"
+                placeholder=""
+              />
             </div>
-            <div className="flex gap-2">
-              <button className="btn btn-primary" onClick={createProject}>
-                Save
-              </button>
+            <div className="flex flex-wrap">
+              <fieldset>
+                <legend className="text-sm/6 font-semibold">
+                  Choose all your preffered languages:
+                </legend>
+                <span className="flex gap-5 flex-wrap checkbox-wrapper mt-5 grid grid-cols-5">
+                  {languagesArray?.map((language) => {
+                    return (
+                      <div
+                        key={language?.code}
+                        className="flex gap-1 checkbox-wrapper"
+                      >
+                        <input
+                          id={language?.code}
+                          name={language?.label}
+                          className="substituted"
+                          type="checkbox"
+                          aria-hidden="true"
+                          {...(language?.default
+                            ? { defaultChecked: true }
+                            : {})}
+                        />
+                        <label
+                          htmlFor={language?.code}
+                          className="items-center"
+                        >
+                          {language?.label}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </span>
+              </fieldset>
+            </div>
+            <div className="flex gap-2 mt-auto ml-auto">
+              <Button onClick={createProject}>Save</Button>
               <button
                 className="btn btn-secondary"
                 onClick={() => setIsOpen(false)}
