@@ -1,5 +1,64 @@
-const languagesArray = [
-  // { value: "", label: "Default", code: "", nativeName: "" },
+type LanguageValue =
+  | "en"
+  | "es"
+  | "fr"
+  | "et_EE"
+  | "bs_BA"
+  | "hr"
+  | "cs"
+  | "nl"
+  | "fr-ca"
+  | "de"
+  | "hu"
+  | "zh_Hans_HK"
+  | "it"
+  | "lv"
+  | "lt"
+  | "mk_MK"
+  | "pl"
+  | "pt"
+  | "pt-br"
+  | "ro"
+  | "sr"
+  | "sk"
+  | "sl"
+  | "sv";
+
+type LanguageCode =
+  | "en"
+  | "es"
+  | "fr"
+  | "et_EE"
+  | "bs_BA"
+  | "hr"
+  | "cs"
+  | "nl"
+  | "fr_CA"
+  | "de_DE"
+  | "hu"
+  | "zh_Hans_HK"
+  | "it"
+  | "lv"
+  | "lt"
+  | "mk_MK"
+  | "pl"
+  | "pt"
+  | "pt_BR"
+  | "ro"
+  | "sr"
+  | "sk"
+  | "sl"
+  | "sv";
+
+interface LanguageOption {
+  value: LanguageValue;
+  label: string;
+  code: LanguageCode;
+  nativeName: string;
+  default?: boolean; // Optional, since only some objects have it
+}
+
+const languagesArray: LanguageOption[] = [
   {
     value: "en",
     label: "English",
@@ -31,40 +90,41 @@ const languagesArray = [
     nativeName: "français, langue canada",
   },
   { value: "de", code: "de_DE", label: "German", nativeName: "Germany" },
-  //   { value: "hu", code: "hu", label: "Hungarian", nativeName: "Hungarian" },
-  //   {
-  //     value: "zh_Hans_HK",
-  //     code: "zh_Hans_HK",
-  //     label: "Hong Kong",
-  //     nativeName: "Hong Kong",
-  //   },
-  //   { value: "it", code: "it", label: "Italian", nativeName: "Italian" },
-  //   { value: "lv", code: "lv", label: "Latvian", nativeName: "Latvian" },
-  //   { value: "lt", code: "lt", label: "Lithuanian", nativeName: "Lithuanian" },
-  //   {
-  //     value: "mk_MK",
-  //     code: "mk_MK",
-  //     label: "Macedonian",
-  //     nativeName: "Macedonian",
-  //   },
-  //   { value: "pl", code: "pl", label: "Polish", nativeName: "Polish" },
-  //   { value: "pt", code: "pt", label: "Portuguese", nativeName: "Português" },
-  //   {
-  //     value: "pt-br",
-  //     code: "pt_BR",
-  //     label: "Portuguese (Brazil)",
-  //     nativeName: "Português (brasil)",
-  //   },
-  //   { value: "ro", code: "ro", label: "Romanian", nativeName: "Romanian" },
-  //   { value: "sr", code: "sr", label: "Serbian", nativeName: "Serbian" },
-  //   {
-  //     value: "sk",
-  //     code: "sk",
-  //     label: "Slovak",
-  //     nativeName: "Slovak",
-  //   },
-  //   { value: "sl", code: "sl", label: "Slovenian", nativeName: "Slovenian" },
-  //   { value: "sv", code: "sv", label: "Swedish", nativeName: "Swedish" },
+  // { value: "hu", code: "hu", label: "Hungarian", nativeName: "Hungarian" },
+  // {
+  //   value: "zh_Hans_HK",
+  //   code: "zh_Hans_HK",
+  //   label: "Hong Kong",
+  //   nativeName: "Hong Kong",
+  // },
+  // { value: "it", code: "it", label: "Italian", nativeName: "Italian" },
+  // { value: "lv", code: "lv", label: "Latvian", nativeName: "Latvian" },
+  // { value: "lt", code: "lt", label: "Lithuanian", nativeName: "Lithuanian" },
+  // {
+  //   value: "mk_MK",
+  //   code: "mk_MK",
+  //   label: "Macedonian",
+  //   nativeName: "Macedonian",
+  // },
+  // { value: "pl", code: "pl", label: "Polish", nativeName: "Polish" },
+  // { value: "pt", code: "pt", label: "Portuguese", nativeName: "Português" },
+  // {
+  //   value: "pt-br",
+  //   code: "pt_BR",
+  //   label: "Portuguese (Brazil)",
+  //   nativeName: "Português (brasil)",
+  // },
+  // { value: "ro", code: "ro", label: "Romanian", nativeName: "Romanian" },
+  // { value: "sr", code: "sr", label: "Serbian", nativeName: "Serbian" },
+  // {
+  //   value: "sk",
+  //   code: "sk",
+  //   label: "Slovak",
+  //   nativeName: "Slovak",
+  // },
+  // { value: "sl", code: "sl", label: "Slovenian", nativeName: "Slovenian" },
+  // { value: "sv", code: "sv", label: "Swedish", nativeName: "Swedish" },
 ];
 
 export { languagesArray };
+export type { LanguageOption, LanguageValue, LanguageCode };
