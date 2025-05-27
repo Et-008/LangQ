@@ -43,3 +43,6 @@ next-env.d.ts
 deno.lock
 .npmrc
 
+.npmrc
+deno.json
+deno.lock
