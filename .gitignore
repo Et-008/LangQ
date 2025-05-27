@@ -44,3 +44,6 @@ deno.json
 deno.lock
 .npmrc
 
+.npmrc
+deno.json
+deno.lock
