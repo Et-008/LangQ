@@ -14,7 +14,7 @@ interface Project {
   id: string;
   name: string;
   description?: string;
-  selectedLanguages: LanguageCode[];
+  languages: LanguageCode[];
   api_key?: string;
   user_id: string;
   created_at: Date;
@@ -85,7 +85,7 @@ export default function Page() {
       .insert({
         user_id: user?.email,
         name: projectName || `Test ${projects?.length}`,
-        selectedLanguages: checkedBoxes?.length ? checkedBoxes : ["en"],
+        languages: checkedBoxes?.length ? checkedBoxes : ["en"],
       })
       .then((res) => {
         getProjects();
@@ -96,14 +96,14 @@ export default function Page() {
   function updateProject(projectId: string) {
     return ({
       projectName,
-      selectedLanguages,
+      languages,
     }: {
       projectName?: string;
-      selectedLanguages?: LanguageCode[];
+      languages?: LanguageCode[];
     }) => {
       return supabase
         .from("projects")
-        .update({ name: projectName, selectedLanguages })
+        .update({ name: projectName, languages })
         .eq("id", projectId)
         .then((res) => {
           getProjects();
@@ -227,10 +227,10 @@ function ProjectDetail({
   project: Project;
   updateProject: ({
     projectName,
-    selectedLanguages,
+    languages,
   }: {
     projectName?: string;
-    selectedLanguages?: LanguageCode[];
+    languages?: LanguageCode[];
   }) => PromiseLike<void>;
 }) {
   const [showDetails, setShowDetails] = useState<boolean>(false);
@@ -264,11 +264,11 @@ function ProjectDetail({
       document.getElementById("projectName") as HTMLInputElement
     )?.value;
     const checkedBoxes = getCheckedBoxes() || [];
-    const updatedObject = { projectName, selectedLanguages: checkedBoxes };
+    const updatedObject = { projectName, languages: checkedBoxes };
     if (!isEqual(projectName, project?.name)) {
       updatedObject.projectName = projectName;
     }
-    if (!isEqual(checkedBoxes, project?.selectedLanguages)) {
+    if (!isEqual(checkedBoxes, project?.languages)) {
       updatedObject.projectName = projectName;
     }
     if (!isEmpty(updatedObject)) {
@@ -334,7 +334,7 @@ function ProjectDetail({
       </div>
       {showDetails && (
         <div
-          key={`${project?.name}-${project?.selectedLanguages?.length}`}
+          key={`${project?.name}-${project?.languages?.length}`}
           className="bg-muted text-sm p-2 m-5 px-3 rounded-md text-foreground gap-3 items-center cursor-pointer"
         >
           <span className="flex w-full">
@@ -386,9 +386,7 @@ function ProjectDetail({
           <span className="flex gap-5 flex-wrap checkbox-wrapper mt-5 grid grid-cols-5">
             {languagesArray
               ?.sort((language) => {
-                return project?.selectedLanguages?.includes(language?.code)
-                  ? -1
-                  : 1;
+                return project?.languages?.includes(language?.code) ? -1 : 1;
               })
               ?.map((language) => {
                 return (
@@ -402,7 +400,7 @@ function ProjectDetail({
                       className="substituted"
                       type="checkbox"
                       aria-hidden="true"
-                      defaultChecked={project?.selectedLanguages.includes(
+                      defaultChecked={project?.languages.includes(
                         language?.code
                       )}
                       disabled={!editMode}
