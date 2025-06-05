@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 import { createHash } from "node:crypto";
 
 
@@ -39,7 +39,7 @@ serve(async (req) => {
   const projectId: string = data?.projects.id!;
   const languages: string[] = data?.projects.languages;
 
-  const translationResponse = await supabase.from("translatedKeys").select('keys(id, name), translations').eq("project_id", projectId);
+  const translationResponse = await supabase.from("keys").select('id, name, translations').eq("project_id", projectId);
 
   if (!translationResponse.data) {
     return new Response(JSON.stringify({ error: "Invalid Project" }), { status: 403 });
@@ -49,10 +49,12 @@ serve(async (req) => {
 
   translationResponse.data?.forEach((e) => {
     languages.forEach((langCode) => {
-      if (translations[`${langCode}`] == null) {
-        translations[`${langCode}`] = {};
+      if (e.translations != null) {
+        if (translations[`${langCode}`] == null) {
+          translations[`${langCode}`] = {};
+        }
+        translations[`${langCode}`][`${e.name}`] = `${e.translations[langCode]}`;
       }
-      translations[`${langCode}`][`${e.keys.name}`] = `${e.translations[langCode]}`;
     });
   })
 
