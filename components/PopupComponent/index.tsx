@@ -15,7 +15,19 @@ function PopupComponent({
       <a className="cursor-pointer" id="clickable">
         {activator || <Button>Open Popover</Button>}
       </a>
-      <Tooltip place="right" anchorSelect="#clickable" clickable>
+      <Tooltip
+        place="right"
+        anchorSelect="#clickable"
+        clickable
+        openEvents={{
+          click: true,
+          mouseenter: false,
+          mousedown: false,
+          mouseover: false,
+          dblclick: false,
+          focus: false,
+        }}
+      >
         <div>
           {content || (
             <div className="px-1 py-2">

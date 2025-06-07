@@ -5,19 +5,28 @@ import Link from "next/link";
 
 import { createClient } from "@/utils/supabase/client";
 import { signOutAction } from "@/app/actions";
+import { LogOutIcon } from "lucide-react";
 
 import menuData from "./menuData";
 import { Button } from "../ui/button";
 import { ThemeSwitcher } from "../theme-switcher";
+import useSessionStorage from "../hooks";
 
 const Header = () => {
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState(false);
   const supabase = createClient();
 
+  const usePathName = usePathname();
+
+  const isLoggedIn = useSessionStorage("UserEmail") || !!user;
+
   const getUser = () => {
     setLoading(true);
     supabase.auth.getUser().then((res) => {
+      if (res?.data?.user?.email) {
+        sessionStorage.setItem("UserEmail", res?.data?.user?.email);
+      }
       setUser(res?.data?.user);
       setLoading(false);
     });
@@ -55,17 +64,31 @@ const Header = () => {
     }
   };
 
-  const usePathName = usePathname();
-
-  return user ? (
-    <div className="flex items-center gap-4 ml-auto">
-      Hey, {user.email}!
-      <ThemeSwitcher />
-      <form action={signOutAction}>
-        <Button type="submit" variant="outline">
-          Sign out
+  return isLoggedIn ? (
+    <div className="flex gap-2 flex-1">
+      <div className="flex w-full items-center justify-between px-4">
+        <Link
+          href="/projects"
+          className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
+            usePathName === "projects"
+              ? "text-primary dark:text-white"
+              : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+          }`}
+        >
+          projects
+        </Link>
+      </div>
+      <div className="flex items-center gap-4 ml-auto">
+        <ThemeSwitcher />
+        <Button
+          type="submit"
+          variant="secondary"
+          title="Logout"
+          onClick={signOutAction}
+        >
+          <LogOutIcon size={16} className={"text-muted-foreground"} />
         </Button>
-      </form>
+      </div>
     </div>
   ) : (
     <div className="flex gap-2 flex-1">

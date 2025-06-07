@@ -112,6 +112,25 @@ export default function Page() {
     };
   }
 
+  function deleteProject(projectId: string) {
+    return () => {
+      supabase
+        .from("keys")
+        .delete()
+        .eq("project_id", projectId)
+        .then((res) => {
+          supabase
+            .from("projects")
+            .delete()
+            .eq("id", projectId)
+            .then((res) => {
+              alert(`Project deleted successfully`);
+              getProjects();
+            });
+        });
+    };
+  }
+
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
       <Link className="text-[12px]" href={"/projects"}>
@@ -185,6 +204,7 @@ export default function Page() {
               key={project?.id}
               project={project}
               updateProject={updateProject(project?.id)}
+              deleteProject={deleteProject(project?.id)}
             />
           );
         })
@@ -223,6 +243,7 @@ let timer: NodeJS.Timeout | null = null;
 function ProjectDetail({
   project,
   updateProject: updateProjectFromProps,
+  deleteProject,
 }: {
   project: Project;
   updateProject: ({
@@ -232,6 +253,7 @@ function ProjectDetail({
     projectName?: string;
     languages?: LanguageCode[];
   }) => PromiseLike<void>;
+  deleteProject: () => void;
 }) {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
@@ -331,6 +353,7 @@ function ProjectDetail({
             )}
           </svg>
         )}
+        {/* <Trash2 onClick={deleteProject} size={16} className="cursor-pointer" /> */}
       </div>
       {showDetails && (
         <div

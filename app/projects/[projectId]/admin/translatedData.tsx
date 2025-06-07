@@ -26,10 +26,10 @@ function TranslatedData({ translatedKey }: { translatedKey: localiseKey }) {
   function getTranslations() {
     setLoading(true);
     supabase
-      .from("translatedKeys")
-      .select()
-      .eq("key_id", translatedKey.id)
-      .then(({ data }) => {
+      .from("keys")
+      .select("translations")
+      .eq("id", translatedKey.id)
+      .then(({ data }: { data: any }) => {
         if (data?.length) {
           setTranslation(data?.[0]);
         }
@@ -61,6 +61,14 @@ function TranslatedData({ translatedKey }: { translatedKey: localiseKey }) {
 
   return (
     <div className="grid gap-3 mt-5">
+      <button
+        className="flex btn btn-secondary text-[8px]"
+        onClick={() => {
+          setShowTranslations(false);
+        }}
+      >
+        Hide Translations
+      </button>
       {Object.entries(translation?.translations || {})?.map(([key, value]) => {
         return (
           <div

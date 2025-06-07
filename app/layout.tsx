@@ -108,7 +108,7 @@ export default function RootLayout({
             <div className="flex-1 w-full flex flex-col gap-5 items-center">
               <Navigation />
               <div
-                className={`${User ? "" : "main-div"} w-full grow p-5 flex justify-center`}
+                className={`${User ? "" : ""} w-full grow p-5 flex justify-center`}
               >
                 <div className="flex flex-col gap-20 max-w-6xl p-5 grow">
                   {children}

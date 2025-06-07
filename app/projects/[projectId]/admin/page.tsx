@@ -15,7 +15,8 @@ import {
 } from "react";
 import TranslatedData from "./translatedData";
 import { Button } from "@/components/ui/button";
-import PopupComponent from "@/components/PopupComponent";
+import { LanguageCode } from "@/constants/Languages";
+import { DownloadIcon } from "lucide-react";
 
 interface localiseKey {
   id?: number;
@@ -23,6 +24,8 @@ interface localiseKey {
   value: string;
   description?: null;
   placeholders?: null;
+  is_translating?: boolean;
+  is_translated?: boolean;
 }
 
 interface translatedData {
@@ -32,8 +35,13 @@ interface translatedData {
 }
 
 interface Project {
+  id: string;
   name: string;
+  description?: string;
+  languages: LanguageCode[];
+  api_key?: string;
   user_id: string;
+  created_at: Date;
 }
 
 export default function Page() {
@@ -71,27 +79,34 @@ export default function Page() {
     setIsOpen((open) => !open);
   }
 
-  function openModal({ key = { name: "", value: "" } }: { key?: localiseKey }) {
-    setEditKey(key);
-    toggleModal();
-  }
+  const openModal = (key?: localiseKey) => {
+    return () => {
+      setEditKey(key || null);
+      toggleModal();
+    };
+  };
 
-  function deleteKey({ key }: { key: localiseKey }) {
-    console.log("deletedKey => ", key);
-    supabase
-      .from("keys")
-      .delete()
-      .eq("project_id", projectId)
-      .eq("id", key?.id)
-      .then((res) => {
-        getData();
-        alert(`${key?.name} deleted successfully`);
-      });
-  }
+  const deleteKey = (key: localiseKey) => {
+    return () => {
+      supabase
+        .from("keys")
+        .delete()
+        .eq("project_id", projectId)
+        .eq("id", key?.id)
+        .then((res) => {
+          getData();
+          alert(`${key?.name} deleted successfully`);
+        });
+    };
+  };
 
   function closeModal() {
     setIsOpen(false);
     setEditKey(null);
+  }
+
+  function redirectToDownload() {
+    document.location.href = `/projects/${projectId}/download`;
   }
 
   const items: ReactNode[] = [];
@@ -105,7 +120,7 @@ export default function Page() {
     const key = keys[i];
     items.push(
       <li
-        className="pt-5 pb-3"
+        className="pt-5 pb-3 key-card"
         key={key?.id}
         // onClick={toggleModal}
       >
@@ -121,96 +136,82 @@ export default function Page() {
             </div>
           </div>
           <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-            <p className="text-sm/6">{key?.value}</p>
-            <span className="flex gap-1">
-              <span>
-                <PopupComponent
-                  activator={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-                      />
-                    </svg>
-                  }
-                  content={
-                    <div className="flex flex-col gap-3">
-                      <span
-                        className="flex gap-2 cursor-pointer items-center"
-                        onClick={() => openModal({ key })}
-                      >
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 15 15"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
-                            fill="currentColor"
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        Edit
-                      </span>
-                      <span
-                        className="flex gap-1 cursor-pointer items-center"
-                        onClick={() => deleteKey({ key })}
-                      >
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect width="24" height="24" />
-                          <path
-                            d="M5 7.5H19L18 21H6L5 7.5Z"
-                            stroke="currentColor"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M15.5 9.5L15 19"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M12 9.5V19"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M8.5 9.5L9 19"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M16 5H19C20.1046 5 21 5.89543 21 7V7.5H3V7C3 5.89543 3.89543 5 5 5H8M16 5L15 3H9L8 5M16 5H8"
-                            stroke="currentColor"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        Delete
-                      </span>
-                    </div>
-                  }
-                />
+            <p className="text-sm/6 text-ellipsis w-[250px]">
+              {key?.is_translating ? (
+                <span className="fake-loader" />
+              ) : (
+                key?.value
+              )}
+            </p>
+
+            <div
+              className="flex flex-col gap-3 absolute key-actions"
+              key={key?.id}
+            >
+              <span
+                title="Edit"
+                className="flex gap-2 cursor-pointer items-center bg-gray-500 p-2 rounded-full"
+                onClick={openModal(key)}
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
+                    fill="white"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </span>
-            </span>
+              <span
+                title="Delete"
+                className="flex gap-1 cursor-pointer items-center  bg-destructive p-2 rounded-full"
+                onClick={deleteKey(key)}
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="24" height="24" />
+                  <path
+                    d="M5 7.5H19L18 21H6L5 7.5Z"
+                    stroke="white"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M15.5 9.5L15 19"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 9.5V19"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8.5 9.5L9 19"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M16 5H19C20.1046 5 21 5.89543 21 7V7.5H3V7C3 5.89543 3.89543 5 5 5H8M16 5L15 3H9L8 5M16 5H8"
+                    stroke="white"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
         {key ? <TranslatedData translatedKey={key} /> : null}
@@ -238,17 +239,24 @@ export default function Page() {
           />
         </CustomModal>
       )}
-      <Link href={"/projects"} className="text-[12px]">
-        Projects
-      </Link>
-      <span className="text-[12px] px-2">{"/"}</span>
-      <span className="text-[12px]">{project?.name}</span>
+      <div className="flex gap-1 w-full text-[12px]">
+        <Link href={"/projects"}>Projects</Link>
+        <span className="px-2">{"/"}</span>
+        <span>{project?.name}</span>
+        <Button
+          className="text-[12px] flex items-center gap-1 cursor-pointer ml-auto"
+          onClick={redirectToDownload}
+        >
+          <DownloadIcon size={16} />
+          Download keys
+        </Button>
+      </div>
       <ul role="list" className="divide-y">
         {items}
         <li
           className="flex justify-center items-center gap-x-6 py-5 cursor-pointer"
           key="AddKey"
-          onClick={() => openModal({})}
+          onClick={openModal()}
         >
           <svg
             width="15"
@@ -325,15 +333,19 @@ function KeyForm({
     supabase
       .from("keys")
       .update({
-        name: keyData?.name,
         value: keyData?.value,
-        project_id: projectId,
-        description: keyData?.description,
       })
-      .eq("project_id", projectId)
       .eq("id", editKey?.id)
       .then((res) => {
-        onSuccess(res);
+        supabase
+          .from("translation_update")
+          .upsert({
+            id: editKey?.id,
+            value: keyData?.value,
+          })
+          .then((res) => {
+            onSuccess(res);
+          });
       });
   }
 
@@ -346,21 +358,23 @@ function KeyForm({
   }
 
   return (
-    <div className="modal min-h-100 px-5 mb-12 rounded-sm bg-white px-8 py-11 shadow-three shadow-lg dark:bg-gray-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]">
+    <div className="modal min-h-100 mb-12 rounded-sm bg-white px-5 py-7 shadow-three shadow-lg dark:bg-gray-dark lg:mb-5 max-h-120 overflow-auto">
       <h1 className="text-3xl font-bold  mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
         Edit key
       </h1>
       <div className="py-6 grid gap-5">
         <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white required">
             Key
           </span>
           <Input
+            required
             title="Key"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
             value={keyData?.name}
             onChange={onChangeHandler("name")}
+            placeholder="Provide a unique key"
           />
           {/* <input
             title="Key"
@@ -372,26 +386,28 @@ function KeyForm({
         </p>
         <p className="">
           <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
-            Description
-          </span>
-          <Input
-            title="Description"
-            type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-            value={keyData?.description || ""}
-            onChange={onChangeHandler("description")}
-          />
-        </p>
-        <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
             Value
           </span>
           <Input
             title="Value"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
             value={keyData?.value}
             onChange={onChangeHandler("value")}
+            placeholder="Add a base value for the key"
+          />
+        </p>
+        <p className="">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
+            Description
+          </span>
+          <Input
+            title="Description"
+            type="text"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            value={keyData?.description || ""}
+            onChange={onChangeHandler("description")}
+            placeholder="Describe what the key is for"
           />
         </p>
         <p className="">
@@ -401,7 +417,7 @@ function KeyForm({
           <Input
             title="Placeholders"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
             value={keyData?.placeholders || ""}
             onChange={onChangeHandler("placeholders")}
           />
