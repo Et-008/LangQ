@@ -1,7 +1,5 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-
-
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 import { createHash } from "node:crypto";
 
 
@@ -27,7 +25,7 @@ serve(async (req) => {
 
   const { data, error } = await supabase
     .from("api_keys")
-    .select("*")
+    .select("project_id")
     .eq("key_id", keyId)
     .eq("key_hash", hashed)
     .eq("revoked", false)
@@ -38,13 +36,29 @@ serve(async (req) => {
   }
 
   const projectId = data.project_id;
-  const otaResponse = await supabase.from('ota').select().eq('project_id', projectId).maybeSingle();
+  const reqdata = await req.json();
+  const lastVersion = reqdata['version']
+
+  const otaResponse = await supabase.from("ota")
+    .select('id, translation, version')
+    .eq("project_id", projectId)
+    .gt('version', lastVersion)
+    .order('version');
 
   if (!otaResponse.data) {
     return new Response(JSON.stringify({ error: "Invalid Project" }), { status: 403 });
   }
 
-  return new Response(JSON.stringify({ data: otaResponse.data['translation'] }), {
+  const ids = otaResponse.data?.map((e) => e['id']);
+  await supabase.rpc('increment_download', {
+    'ids': ids,
+  });
+
+  const translationData = otaResponse.data?.map(function (e) {
+    return { "translation": e['translation'], "version": e["version"] };
+  })
+
+  return new Response(JSON.stringify({ data: translationData }), {
     headers: { "Content-Type": "application/json" },
   });
 });
