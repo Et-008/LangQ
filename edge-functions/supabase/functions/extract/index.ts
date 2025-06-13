@@ -1,11 +1,10 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-
-
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 import { createHash } from "node:crypto";
 
 
 serve(async (req) => {
+  console.log("req", req.headers)
   const auth = req.headers.get("Authorization");
 
   if (!auth?.startsWith("Bearer ")) {
@@ -18,51 +17,43 @@ serve(async (req) => {
   if (!keyId || !keySecret) {
     return new Response(JSON.stringify({ error: "Invalid format" }), { status: 400 });
   }
-
   const hashed = hashKeySecret(keySecret);
 
   const supabase = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
   );
+  const extractedStrings: any[] = await req.json();
+
+  console.log('reqbody', extractedStrings)
+
 
   const { data, error } = await supabase
     .from("api_keys")
-    .select("*")
+    .select('id, project_id')
     .eq("key_id", keyId)
     .eq("key_hash", hashed)
     .eq("revoked", false)
     .maybeSingle();
 
   if (error || !data) {
-    return new Response(JSON.stringify({ error: "Invalid API Key" }), { status: 403 });
+    return new Response(JSON.stringify({
+      error: "Invalid API Key",
+      message: error,
+    }), { status: 403 });
   }
+  const projectId: string = data?.project_id!;
 
-  const projectId = data.project_id;
+  extractedStrings.forEach((e) => {
+    e['project_id'] = projectId
+  });
 
-
-  const files = await supabase.storage.from('langs').list(`project/${projectId}`);
-
-  const urls: any[] = [];
-
-  if (!files.data) {
-
-    return new Response(JSON.stringify({ error: "Invalid Project" }), { status: 403 });
-
-  }
+  const resposne = await supabase.from("extract").upsert(extractedStrings, { onConflict: 'string, type, parent, path, platform, line_column', ignoreDuplicates: true });
 
 
-  for (const file of files.data!) {
+  console.log('res', resposne)
 
-    console.log(`file is ${file.name}`)
-
-    var url = supabase.storage.from('langs').getPublicUrl(`project/${projectId}/${file.name}`);
-
-    urls.push(url.data.publicUrl)
-
-  }
-
-  return new Response(JSON.stringify({ urls: urls }), {
+  return new Response(JSON.stringify({ success: true }), {
     headers: { "Content-Type": "application/json" },
   });
 });

@@ -89,8 +89,6 @@ serve(async (req) => {
   let languages: string[] = [];
   let baseLanguage: string = 'en';
 
-
-
   const isUpdate = table == 'translation_update'
   if (isUpdate) {
     supabase.from('keys').update({
@@ -102,20 +100,16 @@ serve(async (req) => {
     // console.log('Translation update')
 
     const keysResponse = await supabase.from('keys').select('id, projects(id, languages, base_language)').eq('id', record?.id).single();
-    // console.log('Keys', keysResponse.data)
+    console.log('Keys', keysResponse.data)
 
     projectId = keysResponse.data?.projects['id'];
     languages = keysResponse.data?.projects['languages'] ?? [];
     baseLanguage = keysResponse.data?.projects['base_language'] ?? 'en';
   } else {
-    projectId = record?.id;
+    projectId = record?.project_id;
     const projectResponse = await supabase.from('projects').select('base_language, languages').eq('id', projectId).single();
 
-    languages = projectResponse.data?.languages ?? [
-      "en",
-      "es",
-      "ar"
-    ];
+    languages = projectResponse.data?.languages ?? [];
     baseLanguage = projectResponse.data?.base_language ?? 'en';
   }
 
@@ -158,8 +152,39 @@ serve(async (req) => {
 
 
   try {
-    const translationResponse = await openAI.chat.completions.create(prompt);
+    const translationResponse = await openAI.chat.completions.create({
+      "model": "gpt-4o-mini",
+      "store": false,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "icu_translation_map_response",
+          "strict": false,
+          "schema": jsonSchema,
+        }
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a professional translation assistant for app localisation. Return translations in ICU format. Handle all plural categories (zero, one, two, few, many, other) according to each language. Preserve placeholders. Fix typos and grammar. Be efficient with tokens."
+        },
+        {
+          role: "user",
+          content: JSON.stringify(example1)
+        },
+        {
+          role: "user",
+          content: JSON.stringify(task)
+        }
+      ]
+    });
     // console.log("translationData => ", JSON.stringify(translationResponse))
+
+    if (translationResponse !== null) {
+      await supabase.rpc('increment_version', {
+        'project_id': projectId,
+      });
+    }
 
     const parsedData = JSON.parse(translationResponse.choices?.[0]?.message?.content ?? "");
     const translatedData: { [key: string]: string } = {};
@@ -170,10 +195,63 @@ serve(async (req) => {
     });
     // console.log("parsedData => ", parsedData);
 
+    let key: string | null = record?.name;
+
+    if (key == null) {
+      const keyResponse = await openAI.chat.completions.create(
+        {
+          "model": "gpt-4o-mini",
+          "store": false,
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "name": "icu_key_name_response",
+              "strict": false,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key_name"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a professional translation assistant for app localisation. Please generate a localization key for given base value using best practices: - Format the key using dot notation and camelCase - Group by semantic context (e.g., auth.loginButton, profile.userNameLabel) - Avoid redundancy (e.g., don’t include words already implied by grouping) - Keep the value exactly the same"
+            },
+            {
+              "role": "user",
+              "content": "Example 1: {input: \"Sign in with Google\", output: \"auth.signInWithGoogle\"}"
+            },
+            {
+              "role": "user",
+              "content": "Example 2: {input: \"Cancel Your Request\", output: \"message.cancel.request\"}"
+            },
+            {
+              "role": "user",
+              "content": record?.value,
+            }
+          ]
+        }
+      );
+      const parsedData = JSON.parse(keyResponse.choices?.[0]?.message?.content ?? "");
+
+      key = parsedData['key_name'];
+    }
+
     const res = await supabase.from("keys").update({
       translations: translatedData,
       is_translating: false,
       is_translated: true,
+      name: key,
+      last_updated_at: new Date().toISOString(),
     }).eq('id', record?.id);
     // console.log("TransRes => ", res);
 

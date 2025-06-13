@@ -26,7 +26,7 @@ serve(async (req) => {
 
   const { data, error } = await supabase
     .from("api_keys")
-    .select('id, projects(id, languages, base_language)')
+    .select('id, projects(id, languages, base_language, version)')
     .eq("key_id", keyId)
     .eq("key_hash", hashed)
     .eq("revoked", false)
@@ -58,7 +58,15 @@ serve(async (req) => {
     });
   })
 
-  return new Response(JSON.stringify({ languages, translations, base_language: data?.projects.base_language }), {
+  console.log('project version',data?.projects.version)
+
+  return new Response(JSON.stringify(
+    {
+      languages, translations,
+      base_language: data?.projects.base_language,
+      version: data?.projects.version,
+
+    }), {
     headers: { "Content-Type": "application/json" },
   });
 });
