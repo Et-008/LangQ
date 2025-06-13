@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
-import { createHash } from "node:crypto";
+import { hashKeySecret } from "../api_key_generator.ts";
 
 
 serve(async (req) => {
@@ -72,9 +72,6 @@ serve(async (req) => {
 });
 
 
-function hashKeySecret(secret: string): string {
-  return createHash('sha256').update(secret).digest('hex');
-}
 
 
 
