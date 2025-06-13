@@ -43,4 +43,6 @@ next-env.d.ts
 deno.json
 deno.lock
 .npmrc
+*.vscode
+*.temp
 
