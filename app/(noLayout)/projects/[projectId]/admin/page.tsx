@@ -17,6 +17,7 @@ import TranslatedData from "./translatedData";
 import { Button } from "@/components/ui/button";
 import { LanguageCode } from "@/constants/Languages";
 import { DownloadIcon } from "lucide-react";
+import InputError from "@/components/ui/inputError";
 
 interface localiseKey {
   id?: number;
@@ -221,24 +222,22 @@ export default function Page() {
 
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
-      {editKey && (
-        <CustomModal
-          isOpen={isOpen}
-          onClose={() => {
+      <CustomModal
+        isOpen={isOpen}
+        onClose={() => {
+          closeModal();
+        }}
+      >
+        <KeyForm
+          projectId={projectId}
+          editKey={editKey || null}
+          toggleModal={toggleModal}
+          onSuccess={(res) => {
+            getData();
             closeModal();
           }}
-        >
-          <KeyForm
-            projectId={projectId}
-            editKey={editKey}
-            toggleModal={toggleModal}
-            onSuccess={(res) => {
-              getData();
-              closeModal();
-            }}
-          />
-        </CustomModal>
-      )}
+        />
+      </CustomModal>
       <div className="flex gap-1 w-full text-[12px]">
         <Link href={"/projects"}>Projects</Link>
         <span className="px-2">{"/"}</span>
@@ -280,14 +279,17 @@ export default function Page() {
 }
 
 function KeyForm({
-  editKey,
+  editKey = {
+    name: "",
+    value: "",
+  },
   projectId,
   onSuccess,
   toggleModal,
   translationData,
 }: {
   projectId: ParamValue;
-  editKey: localiseKey;
+  editKey?: localiseKey | null;
   toggleModal: () => void;
   onSuccess: (res: any) => void;
   translationData?: translatedData;
@@ -299,6 +301,7 @@ function KeyForm({
     description: editKey?.description,
     placeholders: editKey?.placeholders,
   });
+  const [error, setError] = useState(false);
 
   function onChangeHandler(
     field: "name" | "value" | "description" | "placeholders"
@@ -310,11 +313,26 @@ function KeyForm({
           [field]: e.target?.value || "",
         }));
       }
+      if (error) setError(false);
     };
   }
 
+  function isValidForm() {
+    if (
+      keyData?.name &&
+      keyData?.name?.length > 1 &&
+      keyData?.value &&
+      keyData?.value?.length > 1
+    ) {
+      setError(false);
+      return true;
+    }
+    setError(true);
+    return false;
+  }
+
   function createKey() {
-    if (keyData?.name?.length > 1) {
+    if (isValidForm()) {
       supabase
         .from("keys")
         .insert({
@@ -326,27 +344,31 @@ function KeyForm({
         .then((res) => {
           onSuccess(res);
         });
+    } else {
+      setError(true);
     }
   }
 
   function updateKey() {
-    supabase
-      .from("keys")
-      .update({
-        value: keyData?.value,
-      })
-      .eq("id", editKey?.id)
-      .then((res) => {
-        supabase
-          .from("translation_update")
-          .upsert({
-            id: editKey?.id,
-            value: keyData?.value,
-          })
-          .then((res) => {
-            onSuccess(res);
-          });
-      });
+    if (isValidForm()) {
+      supabase
+        .from("keys")
+        .update({
+          value: keyData?.value,
+        })
+        .eq("id", editKey?.id)
+        .then((res) => {
+          supabase
+            .from("translation_update")
+            .upsert({
+              id: editKey?.id,
+              value: keyData?.value,
+            })
+            .then((res) => {
+              onSuccess(res);
+            });
+        });
+    }
   }
 
   function saveKeyData() {
@@ -358,24 +380,27 @@ function KeyForm({
   }
 
   return (
-    <div className="modal min-h-100 mb-12 rounded-sm bg-white px-5 py-7 shadow-three shadow-lg dark:bg-gray-dark lg:mb-5 max-h-120 overflow-auto">
-      <h1 className="text-3xl font-bold  mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
+    <div className="modal min-h-100 mb-12 rounded-sm px-5 py-7 shadow-three shadow-lg lg:mb-5 max-h-120 overflow-auto">
+      <h1 className="text-3xl font-bold  mb-3 text-2xl font-bold sm:text-3xl lg:text-2xl xl:text-3xl">
         Edit key
       </h1>
       <div className="py-6 grid gap-5">
         <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white required">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium required">
             Key
           </span>
           <Input
             required
             title="Key"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 outline-none"
             value={keyData?.name}
             onChange={onChangeHandler("name")}
             placeholder="Provide a unique key"
           />
+          {error && !keyData?.name ? (
+            <InputError errorMessage="This field is required" />
+          ) : null}
           {/* <input
             title="Key"
             type="text"
@@ -385,49 +410,52 @@ function KeyForm({
           /> */}
         </p>
         <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium">
             Value
           </span>
           <Input
             title="Value"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 outline-none"
             value={keyData?.value}
             onChange={onChangeHandler("value")}
             placeholder="Add a base value for the key"
           />
+          {error && !keyData?.value ? (
+            <InputError errorMessage="This field is required" />
+          ) : null}
         </p>
         <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium">
             Description
           </span>
           <Input
             title="Description"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 outline-none"
             value={keyData?.description || ""}
             onChange={onChangeHandler("description")}
             placeholder="Describe what the key is for"
           />
         </p>
         <p className="">
-          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium text-dark dark:text-white">
+          <span className="text-sm/6 font-semibold  mb-3 block text-sm font-medium">
             Placeholders
           </span>
           <Input
             title="Placeholders"
             type="text"
-            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+            className="input input-bordered w-full  border-stroke w-full rounded-sm border bg-[#f8f8f8] px-3 py-3 outline-none"
             value={keyData?.placeholders || ""}
             onChange={onChangeHandler("placeholders")}
           />
         </p>
       </div>
       <div className="flex gap-2">
-        <Button className="btn btn-primary" onClick={saveKeyData}>
+        <Button onClick={saveKeyData} variant="noThemedefault">
           Save
         </Button>
-        <Button className="btn btn-secondary" onClick={toggleModal}>
+        <Button variant="plain" onClick={toggleModal}>
           Cancel
         </Button>
       </div>

@@ -19,11 +19,15 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        manrope: ["var(--font-manrope)"],
+        banilu: ["banilu", "sans-serif"],
+      },
       colors: {
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
-        black: "#121723",
+        black: "#000000",
         dark: "#1D2430",
         yellow: "#FBB040",
         border: "hsl(var(--border))",
