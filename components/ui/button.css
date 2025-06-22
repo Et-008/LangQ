@@ -1,0 +1,538 @@
+.buttonHolder {
+  transform: scale(0.7);
+  width: max-content;
+  max-height: 20px;
+  position: relative;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+svg {
+  position: absolute;
+}
+
+.electric {
+  padding: 20px 50px;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: rgba(106, 123, 252, 0.13);
+  border: 2px solid rgb(125, 140, 255);
+  color: white;
+  position: relative;
+  filter: blur(0px);
+}
+
+#electric2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(1px);
+  background-color: rgba(106, 123, 252, 0.414);
+  border: 2px solid rgb(125, 140, 255);
+  color: rgb(182, 191, 255);
+  /* display: none; */
+  z-index: -1;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.yellow {
+  width: 110%;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 1000;
+  animation: dash 1s linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.blue {
+  width: 110%;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 1000;
+  animation: dash 1.2s linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+#y1 {
+  top: -115%;
+  left: -5%;
+  filter: blur(0.5px);
+}
+
+#y2 {
+  width: 120%;
+  left: -10%;
+  top: -155%;
+  filter: brightness(1);
+}
+
+#b1 {
+  left: -5%;
+  top: -125%;
+  /* filter: blur(.5px) */
+}
+
+#b2 {
+  left: -10%;
+  top: -165%;
+  width: 120%;
+  /* filter: blur(.5px) */
+}
+
+@keyframes dot1 {
+  from {
+    bottom: 0%;
+    left: 10%;
+    opacity: 1;
+  }
+  to {
+    bottom: -30%;
+    left: 0%;
+    opacity: 0;
+  }
+}
+@keyframes dot2 {
+  from {
+    top: 0%;
+    left: 30%;
+    opacity: 1;
+  }
+  to {
+    top: -30%;
+    left: 40%;
+    opacity: 0;
+  }
+}
+
+@keyframes dot3 {
+  from {
+    top: 0%;
+    left: 80%;
+    opacity: 1;
+  }
+  to {
+    top: -30%;
+    left: 80%;
+    opacity: 0;
+  }
+}
+@keyframes dot4 {
+  from {
+    bottom: 20%;
+    left: 100%;
+    opacity: 1;
+  }
+  to {
+    bottom: 30%;
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+.part {
+  content: " ";
+  width: 3px;
+  height: 3px;
+  border-radius: 5px;
+  background-color: rgb(183, 226, 255);
+  z-index: 2;
+  position: absolute;
+  filter: blur(1px);
+  display: none;
+}
+
+#part1 {
+  animation: dot1;
+  transform-origin: center;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-iteration-count: infinite;
+}
+#part2 {
+  animation: dot2;
+  transform-origin: center;
+  animation-duration: 1.6s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-iteration-count: infinite;
+}
+#part3 {
+  animation: dot3;
+  transform-origin: center;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-iteration-count: infinite;
+}
+
+#part4 {
+  animation: dot4;
+  transform-origin: center;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-iteration-count: infinite;
+}
+
+.hide {
+  opacity: 0;
+}
+
+#electric1:hover + .hide,
+#electric1:hover .hide {
+  opacity: 1;
+}
+
+.electric:hover .part {
+  display: flex;
+}
+
+/* Shimmer button css */
+
+@property --mask {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 33deg;
+}
+
+@keyframes spin {
+  0% {
+    --mask: 0deg;
+  }
+  100% {
+    --mask: 360deg;
+  }
+}
+
+@keyframes wipe {
+  0% {
+    mask-position: 200% center;
+  }
+  100% {
+    mask-position: 0% center;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse2 {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  14% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.1;
+    mask-image: none;
+  }
+  1% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0.5;
+  }
+  3% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.7;
+  }
+  5% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.7;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 15%,
+      black 45%,
+      black 55%,
+      transparent 85%
+    );
+  }
+  8% {
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  13% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.1;
+    mask-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.4) 25%,
+      transparent 45%,
+      black 65%,
+      black 90%,
+      transparent 100%
+    );
+  }
+  17% {
+    opacity: 0.8;
+  }
+  19% {
+    opacity: 0.3;
+  }
+  21.5% {
+    opacity: 0;
+  }
+  23% {
+    opacity: 1;
+  }
+  39% {
+    opacity: 0.7;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  49% {
+    opacity: 0.9;
+  }
+  52% {
+    opacity: 0.7;
+  }
+  53.5% {
+    opacity: 0.2;
+    mask-image: linear-gradient(
+      90deg,
+      black 15%,
+      black 45%,
+      rgba(0, 0, 0, 0.4) 75%,
+      transparent 85%
+    );
+  }
+  57% {
+    opacity: 0.8;
+  }
+  63% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  77% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  82% {
+    opacity: 0.95;
+  }
+  83% {
+    opacity: 0.85;
+  }
+  86% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 0.85;
+  }
+  91% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes btntext {
+  0% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: -100% center;
+  }
+}
+
+.dark button.shimmerButton {
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 2px 3px 1px hsl(var(--glow-hue) 50% 20% / 50%);
+  border: none;
+  outline: none;
+  border-radius: 0.66em;
+  scale: 1;
+  transition: all var(--spring-duration) var(--spring-easing);
+  text-transform: unset;
+}
+
+.shimmer {
+  position: absolute;
+  inset: -40px;
+  border-radius: inherit;
+  mix-blend-mode: color-dodge;
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+}
+
+.shimmer::before,
+.shimmer::after {
+  transition: all 0.5s ease;
+  opacity: 0;
+  content: "";
+  border-radius: inherit;
+  position: absolute;
+  inset: 40px;
+}
+.shimmer::before {
+  box-shadow:
+    0 0 3px 2px hsl(var(--shimmer-hue-1) 20% 95%),
+    0 0 7px 4px hsl(var(--shimmer-hue-1) 20% 80%),
+    0 0 13px 8px hsl(var(--shimmer-hue-2) 40% 60%),
+    0 0 22px 6px hsl(var(--shimmer-hue-2) 20% 40%);
+  z-index: -1;
+}
+.shimmer::after {
+  box-shadow:
+    inset 0 0 0 1px hsl(var(--shimmer-hue-2) 70% 95%),
+    inset 0 0 3px 1px hsl(var(--shimmer-hue-2) 100% 80%),
+    inset 0 0 9px 1px hsl(var(--shimmer-hue-2) 100% 70%);
+  z-index: 2;
+}
+
+button[disabled].shimmerButton {
+  background: rgb(76 76 92);
+  background-image: none;
+}
+button.shimmerButton:hover:not(:active):not([disabled]) {
+  scale: 1.1;
+  transition-duration: calc(var(--spring-duration) * 0.5);
+}
+button.shimmerButton:active:not([disabled]) {
+  scale: 1.05;
+  transition-duration: calc(var(--spring-duration) * 0.5);
+}
+button.shimmerButton:focus .shimmer,
+button.shimmerButton:active .shimmer {
+  animation-play-state: paused !important;
+  mask-image: none !important;
+}
+button.shimmerButton:hover:not([disabled]),
+button.shimmerButton:hover:not([disabled]) .shimmer::before,
+button.shimmerButton:hover:not([disabled]) .shimmer::after {
+  opacity: 1;
+}
+
+button.shimmerButton .text {
+  color: inherit;
+  background-clip: text;
+  background-color: var(--bg);
+  background-image: linear-gradient(
+    120deg,
+    transparent,
+    hsla(var(--shimmer-hue-1), 100%, 80%, 0.66) 40%,
+    hsla(var(--shimmer-hue-2), 100%, 90%, 0.9) 50%,
+    transparent 52%
+  );
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+  background-position: center 200%;
+}
+
+button.shimmerButton:not([disabled]):hover .text {
+  animation: btntext 0.66s ease-in-out 1;
+}
+
+button.shimmerButton:not([disabled]) .shimmer::before,
+button.shimmerButton:not([disabled]) .shimmer::after {
+  opacity: 1;
+}
+button.shimmerButton:not([disabled]) .shimmer {
+  mask-image: conic-gradient(
+    from var(--mask, 0deg),
+    transparent 0%,
+    transparent 10%,
+    black 36%,
+    black 45%,
+    transparent 50%,
+    transparent 60%,
+    black 85%,
+    black 95%,
+    transparent 100%
+  );
+  mask-size: cover;
+  animation: spin 3s linear infinite both -0.5s;
+}
+button.shimmerButton:not([disabled])[data-effect="wipe"] .shimmer {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 20%,
+    black 88%,
+    transparent 90%
+  );
+  mask-size: 200% 200%;
+  mask-position: center;
+  animation: wipe 1.5s linear infinite both -0.5s;
+}
+button.shimmerButton:not([disabled])[data-effect="wave"] .shimmer {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 15%,
+    black 45%,
+    black 55%,
+    transparent 85%
+  );
+  mask-size: 200% 200%;
+  mask-position: center;
+  animation: wipe 3s linear infinite both -0.5s;
+}
+button.shimmerButton:not([disabled])[data-effect="throb"] .shimmer {
+  mask-image: none;
+  animation: pulse 3s ease infinite both -0.5s;
+}
+button.shimmerButton:not([disabled])[data-effect="pulse"] .shimmer {
+  mask-image: none;
+  animation: pulse2 3s ease infinite both -0.5s;
+}
+button.shimmerButton:not([disabled])[data-effect="flicker"] .shimmer {
+  mask-image: none;
+  animation: flicker 3.33s ease infinite both -0.5s;
+}

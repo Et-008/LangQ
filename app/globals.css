@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./special-effects.css";
+
 @layer base {
   :root {
+    --glow-text: #ffffff;
+    --glow-text-bg: #0e3742;
+    --glow-text-alternate: #ffffff;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -30,9 +35,59 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --content-min-height: calc(100% - 333px);
+
+    --shimmer-hue-1: 213deg;
+    --shimmer-sat-1: 95%;
+    --shimmer-lit-1: 91%;
+    --shimmer-hue-2: 248deg;
+    --shimmer-sat-2: 100%;
+    --shimmer-lit-2: 86%;
+    --shimmer-hue-3: 293deg;
+    --shimmer-sat-3: 78%;
+    --shimmer-lit-3: 89%;
+
+    --glow-hue: 222deg;
+    --shadow-hue: 180deg;
+    --spring-easing: linear(
+      0,
+      0.002,
+      0.01 0.9%,
+      0.038 1.8%,
+      0.156,
+      0.312 5.8%,
+      0.789 11.1%,
+      1.015 14.2%,
+      1.096,
+      1.157,
+      1.199,
+      1.224 20.3%,
+      1.231,
+      1.231,
+      1.226,
+      1.214 24.6%,
+      1.176 26.9%,
+      1.057 32.6%,
+      1.007 35.5%,
+      0.984,
+      0.968,
+      0.956,
+      0.949 42%,
+      0.946 44.1%,
+      0.95 46.5%,
+      0.998 57.2%,
+      1.007,
+      1.011 63.3%,
+      1.012 68.3%,
+      0.998 84%,
+      1
+    );
+    --spring-duration: 1.33s;
   }
 
   .dark {
+    --glow-text: #ffffff;
+    --glow-text-bg: #03bcf4;
+    --glow-text-alternate: #0e3742;
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -63,14 +118,22 @@
 @layer base {
   * {
     @apply border-border;
+    font-family: var(--font-manrope);
+
+    /* font-family: "banilu" !important; */
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
+/* .hero-header,
+.hero-header * {
+  font-family: "banilu" !important;
+} */
+
 .modal {
-  @apply bg-foreground text-background border-foreground;
+  @apply bg-secondary dark:bg-foreground text-secondary-foreground dark:text-secondary border-primary dark:border-secondary;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -107,7 +170,7 @@
 .modal input {
   border: 1px solid;
   border-radius: 3px;
-  @apply bg-foreground text-background border-background;
+  /* @apply bg-background text-card-foreground border-card; */
 }
 
 /* HTML: <div class="loader"></div> */

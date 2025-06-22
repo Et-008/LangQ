@@ -1,0 +1,105 @@
+.blink-light {
+  /* font-family: "banilu"; */
+  position: relative;
+  /* font-size: 3em; */
+  /* letter-spacing: 5px; */
+  color: var(--glow-text);
+  text-shadow:
+    0 0 10px var(--glow-text-bg),
+    0 0 20px var(--glow-text-bg),
+    0 0 40px var(--glow-text-bg),
+    0 0 80px var(--glow-text-bg),
+    0 0 160px var(--glow-text-bg);
+  /* text-transform: uppercase; */
+  text-align: center;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  outline: none;
+  animation: text 3s linear 1s;
+}
+::selection {
+  color: currentColor;
+  background-color: #03bcf422;
+}
+
+.blink-light-2 {
+  /* font-family: "banilu"; */
+  position: relative;
+  /* font-size: 3em; */
+  /* letter-spacing: 5px; */
+  color: var(--glow-text);
+  text-shadow:
+    0 0 10px var(--glow-text-bg),
+    0 0 20px var(--glow-text-bg),
+    0 0 40px var(--glow-text-bg),
+    0 0 80px var(--glow-text-bg),
+    0 0 160px var(--glow-text-bg);
+  /* text-transform: uppercase; */
+  text-align: center;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  outline: none;
+  animation: texts 3s linear 1s;
+}
+
+@keyframes text {
+  0%,
+  18%,
+  20%,
+  50.1%,
+  60%,
+  65.1%,
+  80%,
+  90.1%,
+  92% {
+    color: var(--glow-text-alternate);
+    text-shadow: 0 0 5px var(--glow-text-alternate);
+  }
+  18.1%,
+  20.1%,
+  50%,
+  60.1%,
+  65%,
+  80.1%,
+  90%,
+  92.1%,
+  100% {
+    color: var(--glow-text);
+    text-shadow:
+      0 0 10px var(--glow-text-bg),
+      0 0 20px var(--glow-text-bg),
+      0 0 40px var(--glow-text-bg),
+      0 0 80px var(--glow-text-bg),
+      0 0 160px var(--glow-text-bg);
+  }
+}
+
+@keyframes texts {
+  0%,
+  18.1%,
+  20.1%,
+  50%,
+  60%,
+  65.1%,
+  80%,
+  90.1%,
+  92% {
+    color: var(--glow-text-alternate);
+    text-shadow: 0 0 5px var(--glow-text-alternate);
+  }
+  18%,
+  20%,
+  50.1%,
+  60.1%,
+  65%,
+  80.1%,
+  90%,
+  92.1%,
+  100% {
+    color: var(--glow-text);
+    text-shadow:
+      0 0 10px var(--glow-text-bg),
+      0 0 20px var(--glow-text-bg),
+      0 0 40px var(--glow-text-bg),
+      0 0 80px var(--glow-text-bg),
+      0 0 160px var(--glow-text-bg);
+  }
+}

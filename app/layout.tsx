@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Geist } from "next/font/google";
+import { Geist, Manrope } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { createClient } from "@/utils/supabase/server";
 import "./globals.css";
@@ -10,6 +10,12 @@ const defaultUrl = process.env.VERCEL_URL
   : "http://localhost:3000";
 
 let User: any;
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
+});
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -93,7 +99,10 @@ export default function RootLayout({
 }>) {
   getUser();
   return (
-    <html lang="en" className={geistSans.className} suppressHydrationWarning>
+    <html lang="en" className={manrope.variable} suppressHydrationWarning>
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/banilu" rel="stylesheet" />
+      </head>
       <body
         className="bg-background text-foreground dark:bg-black"
         data-testim-main-word-scripts-loaded="true"
