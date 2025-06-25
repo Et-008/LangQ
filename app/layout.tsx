@@ -39,12 +39,12 @@ export const metadata = {
     siteName: "LangQ",
     images: [
       {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/og-image.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9vZy1pbWFnZS5wbmciLCJpYXQiOjE3NDU3NzcwOTMsImV4cCI6MTgwODg0OTA5M30.6bDWBfm9Qike3XtOqJiOR6n1Ze0hswEKLRLbNFPrRPA", // Must be an absolute URL
+        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
         width: 800,
         height: 600,
       },
       {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/og-image.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9vZy1pbWFnZS5wbmciLCJpYXQiOjE3NDU3NzcwOTMsImV4cCI6MTgwODg0OTA5M30.6bDWBfm9Qike3XtOqJiOR6n1Ze0hswEKLRLbNFPrRPA", // Must be an absolute URL
+        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
         width: 1800,
         height: 1600,
         alt: "My custom alt",

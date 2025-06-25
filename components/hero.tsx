@@ -9,7 +9,7 @@ export default function Header() {
   }
 
   function redirectToSignupPage() {
-    const url = "https://localhost:3001/signup";
+    const url = `${process.env.APP_DOMAIN}/sign-up`;
     document.location.href = url;
   }
 
