@@ -9,7 +9,7 @@ export default function Header() {
   }
 
   function redirectToSignupPage() {
-    const url = `${process.env.APP_DOMAIN}/sign-up`;
+    const url = `https://${process.env.APP_DOMAIN}/sign-up`;
     document.location.href = url;
   }
 

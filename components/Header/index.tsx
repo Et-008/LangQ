@@ -136,7 +136,9 @@ const Header = () => {
             variant={"outline"}
             className="group relative"
           >
-            <Link href={`${process.env.APP_DOMAIN}/sign-in`}>Log in</Link>
+            <Link href={`https://${process.env.APP_DOMAIN}/sign-in`}>
+              Log in
+            </Link>
           </Button>
           <Button
             asChild
@@ -144,7 +146,7 @@ const Header = () => {
             variant={"default"}
             className="group relative"
           >
-            <Link href={`${process.env.APP_DOMAIN}/sign-up`}>
+            <Link href={`https://${process.env.APP_DOMAIN}/sign-up`}>
               Get started for free
             </Link>
           </Button>
