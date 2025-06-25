@@ -8,9 +8,22 @@ export default function Header() {
     window.open(url, "_blank");
   }
 
+  function redirectWithAnchor(url: string, newTab: boolean = false) {
+    const a = document.createElement("a");
+    a.href = url;
+    a.style.display = "none"; // optional, hide it
+    if (newTab) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer"; // security best practice
+    }
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   function redirectToSignupPage() {
-    const url = `https://${process.env.APP_DOMAIN}/sign-up`;
-    document.location.href = url;
+    const url = `${process.env.NEXT_PUBLIC_APP_DOMAIN}/sign-up`;
+    redirectWithAnchor(url, true);
   }
 
   return (
