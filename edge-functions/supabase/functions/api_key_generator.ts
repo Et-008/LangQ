@@ -25,3 +25,11 @@ export function createApiKey(): {
   const full = `${keyId}.${keySecret}`;
   return { full, keyId, keySecret, hash };
 }
+
+
+export function validateToken(auth: string) {
+  const token = auth.slice(7); // strip "Bearer "
+  const [keyId, keySecret] = token.split(".");
+
+  return { keyId, keySecret }
+}
