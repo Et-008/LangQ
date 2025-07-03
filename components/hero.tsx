@@ -2,23 +2,23 @@ import NextLogo from "./next-logo";
 import SupabaseLogo from "./supabase-logo";
 import { Button, ElectricButton, ShimmerButton } from "./ui/button";
 
+export function redirectWithAnchor(url: string, newTab: boolean = false) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.style.display = "none"; // optional, hide it
+  if (newTab) {
+    a.target = "_blank";
+    a.rel = "noopener noreferrer"; // security best practice
+  }
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 export default function Header() {
   function openCalendlyInNewTab() {
     const url = "https://calendly.com/team-lang-q/30min";
     window.open(url, "_blank");
-  }
-
-  function redirectWithAnchor(url: string, newTab: boolean = false) {
-    const a = document.createElement("a");
-    a.href = url;
-    a.style.display = "none"; // optional, hide it
-    if (newTab) {
-      a.target = "_blank";
-      a.rel = "noopener noreferrer"; // security best practice
-    }
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   }
 
   function redirectToSignupPage() {
