@@ -45,11 +45,10 @@ function BookADemoButton() {
 
 function isEmailValid(email: string, setError: (errorMessage: string) => void) {
   let isValid = true;
-  if (!email) {
+  if (!email?.length) {
     if (setError) setError("Email is required.");
     isValid = false;
-  }
-  if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
+  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
     if (setError) setError("Email is invalid.");
     isValid = false;
   }
@@ -58,13 +57,16 @@ function isEmailValid(email: string, setError: (errorMessage: string) => void) {
 }
 
 function sendSupportNotification(emailId?: string) {
-  fetch("https://ymsreanckxyrthosfqiq.supabase.co/functions/v1/support", {
-    method: "POST",
-    body: JSON.stringify({
-      type: "message",
-      content: `${emailId} has requested for Callback.`,
-    }),
-  })
+  return fetch(
+    "https://ymsreanckxyrthosfqiq.supabase.co/functions/v1/support",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        type: "message",
+        content: `${emailId} has requested for Callback.`,
+      }),
+    }
+  )
     .then((res) => {
       alert("Callback request sent!");
       // notification.show("Yay! We will contact you shortly.", {
@@ -87,31 +89,42 @@ function RequestACallBack() {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
 
+  const [showForm, setShowForm] = useState<boolean>(false);
+
   function submitRequest() {
     const validEmail = isEmailValid(email, setError);
     if (validEmail) {
       setError("");
-      sendSupportNotification(email);
+      sendSupportNotification(email).finally(() => {
+        setShowForm(false);
+      });
     }
   }
 
   return (
     <div className="flex flex-col gap-3 max-w-64 m-auto text-center">
-      <Input
-        type="email"
-        title="Email"
-        id="Email"
-        placeholder="Enter your email Id"
-        value={email}
-        onChange={(e: ChangeEvent | any) => {
-          setEmail(e.target.value);
-        }}
-      />
-      {error?.length ? (
-        <span className="text-red-600 text-xs">*{error}</span>
+      {showForm ? (
+        <div className="text-left">
+          <Input
+            type="email"
+            title="Email"
+            id="Email"
+            placeholder="Enter your email Id"
+            value={email}
+            onChange={(e: ChangeEvent | any) => {
+              setEmail(e.target.value);
+            }}
+          />
+          {error?.length ? (
+            <span className="text-red-600 text-xs pl-1">* {error}</span>
+          ) : null}
+        </div>
       ) : null}
-      <Button variant="default" onClick={submitRequest}>
-        Request a Call back
+      <Button
+        variant="default"
+        onClick={showForm ? submitRequest : () => setShowForm(true)}
+      >
+        {showForm ? "Submit Request" : "Request a Call back"}
       </Button>
     </div>
   );

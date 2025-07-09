@@ -2,7 +2,7 @@ import { Button, ShimmerButton } from "@/components/ui/button";
 
 import { Metadata } from "next";
 import FallingText from "./fallingText";
-import { SignUpButton } from "../../components/Buttons";
+import { RequestACallBack, SignUpButton } from "../../components/Buttons";
 
 export const metadata: Metadata = {
   title: "Lang Q | Pricing page",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 function PricingPage() {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto p-6 absolute ">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto p-6 absolute z-50">
         <div className="flex flex-col gap-20">
           <div
             key={"Starter"}
@@ -46,7 +46,8 @@ function PricingPage() {
 
           <div className="flex flex-col gap-2 text-center">
             Want to know more?
-            <Button>Request a Call back</Button>
+            {/* <Button>Request a Call back</Button> */}
+            <RequestACallBack />
           </div>
         </div>
       </div>
