@@ -19,7 +19,7 @@ const manrope = Manrope({
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "LangQ",
+  title: "LangQ | Home",
   description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
   keywords: ["LangQ", "Translate", "Internationalisation"],
   authors: [{ name: "ArunEt" }, { name: "Arun", url: "https://et-008.in/" }],

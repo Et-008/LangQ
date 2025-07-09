@@ -136,7 +136,10 @@ const Header = () => {
             variant={"outline"}
             className="group relative"
           >
-            <a href={`${process.env.APP_DOMAIN}/sign-in`} target="_blank">
+            <a
+              href={`${process.env.NEXT_PUBLIC_APP_DOMAIN}/sign-in`}
+              target="_blank"
+            >
               Log in
             </a>
           </Button>
@@ -146,7 +149,10 @@ const Header = () => {
             variant={"default"}
             className="group relative"
           >
-            <a href={`${process.env.APP_DOMAIN}/sign-up`} target="_blank">
+            <a
+              href={`${process.env.NEXT_PUBLIC_APP_DOMAIN}/sign-up`}
+              target="_blank"
+            >
               Get started for free
             </a>
           </Button>

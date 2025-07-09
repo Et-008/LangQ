@@ -38,7 +38,7 @@ interface LanguageCheckbox extends HTMLInputElement {
 }
 
 export default function DownloadPage() {
-  const { projectId } = useParams();
+  const { projectId }: any = useParams();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const supabase = createClient();

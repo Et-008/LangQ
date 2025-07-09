@@ -1,13 +1,25 @@
-"use client";
-
+import { BookADemoButton } from "@/components/Buttons";
 import Hero from "@/components/hero";
 import LangqProvider from "@/components/LangqProvider/provider";
+import QuickFeatures from "@/components/QuickFeatures";
+import Terminal from "@/components/Terminal";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import WhyWeStarted from "@/components/WhyWeStarted";
 import { FormattedMessage } from "react-intl";
 
 export default async function Home() {
   return (
     <>
       <Hero />
+      {/* <QuickFeatures />
+      <WhyWeStarted />
+      <div className="flex content-center flex-col max-w-[350px] m-auto gap-10 border p-10 rounded-lg text-center">
+        Why don't you give us a try?
+        <br />
+        <BookADemoButton />
+      </div> */}
+      {/* <Terminal /> */}
       {/* <LangqProvider
         locale="en"
         projectToken="eba4c5fb6b64467c.39539e5a3a329ce5c0ee03b50cbb0958b96dc1741f47356c0c9fafcccfa6a7e6"

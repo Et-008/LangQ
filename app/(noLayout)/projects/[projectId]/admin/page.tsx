@@ -46,7 +46,7 @@ interface Project {
 }
 
 export default function Page() {
-  const { projectId } = useParams();
+  const { projectId }: any = useParams();
   const [isOpen, setIsOpen] = useState(false);
 
   const [keys, setKeys] = useState<localiseKey[]>([]);

@@ -11,16 +11,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://acme.com/about",
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "yearly",
       priority: 0.8,
     },
     {
-      url: "https://acme.com/blog",
+      url: `${baseUrl}/pricing`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }
