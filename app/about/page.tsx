@@ -22,8 +22,8 @@ const AboutPage = () => {
     <>
       <h1 className="fx actr m-auto text-2xl">About Us</h1>
       <OurStory />
-      <WhyWeStarted />
       <GetStartedWithUs />
+      <WhyWeStarted />
     </>
   );
 };
