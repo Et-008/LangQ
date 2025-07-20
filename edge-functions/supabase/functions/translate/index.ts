@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { translate } from "../translation.ts";
-import { supabase } from "../supabase.ts";
+import { supabase } from "../utils/supabase_client.ts";
+import { openAiTranslation } from "../services/translation/openai_translation.ts";
+import { generatePluralICU } from "../services/icu_generator.ts";
 
 console.info('server started');
 
@@ -10,6 +11,7 @@ serve(async (req) => {
 
   let projectId: string;
   let languages: string[] = [];
+  let glossary: string[] = [];
   let baseLanguage: string = 'en';
 
   const isUpdate = table == 'translation_update'
@@ -20,29 +22,39 @@ serve(async (req) => {
     }).eq('id', record?.id);
     // console.log('Translation update')
 
-    const keysResponse = await supabase.from('keys').select('id, projects(id, languages, base_language)').eq('id', record?.id).single();
+    const keysResponse = await supabase.from('keys').select('id, projects(id, languages, base_language, glossary)').eq('id', record?.id).single();
     console.log('Keys', keysResponse.data)
 
     projectId = keysResponse.data?.projects['id'];
     languages = keysResponse.data?.projects['languages'] ?? [];
+    glossary = keysResponse.data?.projects['glossary'] ?? [];
     baseLanguage = keysResponse.data?.projects['base_language'] ?? 'en';
   } else {
     projectId = record?.project_id;
-    const projectResponse = await supabase.from('projects').select('base_language, languages').eq('id', projectId).single();
+    const projectResponse = await supabase.from('projects').select('base_language, languages, glossary').eq('id', projectId).single();
 
     languages = projectResponse.data?.languages ?? [];
+    glossary = projectResponse.data?.glossary ?? [];
     baseLanguage = projectResponse.data?.base_language ?? 'en';
   }
 
   try {
     // console.log("translationData => ", JSON.stringify(translationResponse))
-    const translatedData = await translate({
+
+    let icuMessage: string = record.value;
+
+    if (record?.plurals?.length > 0) {
+      icuMessage = await generatePluralICU(record.value, record.plurals) ?? record.value
+    }
+
+    const translatedData = await openAiTranslation.translate({
       id: record?.id,
       name: record?.name,
-      value: record?.value,
+      value: icuMessage,
       plurals: record?.plurals,
       base_language: baseLanguage,
       languages: languages,
+      glossary: glossary,
     });
 
     if (translatedData == null) {

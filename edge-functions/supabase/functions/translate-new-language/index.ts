@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { translate } from "../translation.ts";
-import { supabase } from "../supabase.ts";
+import { translate } from "../services/translation/translation.ts";
+import { supabase } from "../utils/supabase_client.ts";
 
 console.info("server started");
 

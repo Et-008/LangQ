@@ -5,4 +5,5 @@ export interface TranslationInput {
     languages: string[]
     base_language: string
     plurals: string[]
+    glossary: string[]
 }

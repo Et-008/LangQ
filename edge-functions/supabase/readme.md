@@ -1,6 +1,7 @@
-``npx supabase functions deploy langq-middleware --no-verify-jwt``
 
-``npx supabase functions deploy langq-ota --no-verify-jwt``
+``npx supabase functions deploy translate --no-verify-jwt``
+
+``npx supabase functions deploy pull --no-verify-jwt``
 
 
 

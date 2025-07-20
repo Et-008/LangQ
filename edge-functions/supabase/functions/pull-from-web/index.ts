@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { hashKeySecret } from "../api_key_generator.ts";
-import { supabase } from "../supabase.ts";
+import { hashKeySecret } from "../services/api_auth/api_key_generator.ts";
+import { supabase } from "../utils/supabase_client.ts";
 
 export const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
