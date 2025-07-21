@@ -9,7 +9,7 @@ export default function Navigation() {
       <div className="w-full max-w-6xl flex items-center p-3 px-5 text-sm">
         <div className="flex gap-5 items-center font-semibold text-lg mr-10">
           <h1>
-            <Link href={"/"}>LangQ</Link>
+            <Link href={"/"}>Lang Q</Link>
           </h1>
         </div>
         {!hasEnvVars ? <EnvVarWarning /> : <Header />}
