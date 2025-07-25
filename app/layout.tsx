@@ -37,46 +37,46 @@ export const metadata = {
     description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
     url: defaultUrl,
     siteName: "LangQ",
-    images: [
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
-        width: 1800,
-        height: 1600,
-        alt: "My custom alt",
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
+    //     width: 800,
+    //     height: 600,
+    //   },
+    //   {
+    //     url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",
+    //     width: 1800,
+    //     height: 1600,
+    //     alt: "My custom alt",
+    //   },z
+    // ],
   },
-  icons: {
-    icon: [
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
-      },
-      new URL(
-        "/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
-        "https://ymsreanckxyrthosfqiq.supabase.co"
-      ),
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
-    shortcut: ["/shortcut-icon.png"],
-    apple: [
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
-      },
-      {
-        url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
-  },
+  // icons: {
+  //   icon: [
+  //     {
+  //       url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
+  //     },
+  //     new URL(
+  //       "/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
+  //       "https://ymsreanckxyrthosfqiq.supabase.co"
+  //     ),
+  //     {
+  //       url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
+  //       media: "(prefers-color-scheme: dark)",
+  //     },
+  //   ],
+  //   shortcut: ["/shortcut-icon.png"],
+  //   apple: [
+  //     {
+  //       url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
+  //     },
+  //     {
+  //       url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2E2NzAwNDFhLTcwNTItNDVkNS05YmQ5LTEyMzNjZDQ2MzVmZiJ9.eyJ1cmwiOiJsYW5ncS9sb2dvLnBuZyIsImlhdCI6MTc0NTc3ODYxMywiZXhwIjoxNzc3MzE0NjEzfQ.aIE7AB9A24x2GOcR8Sa9ZLWx4wQXO32cIn-qoA1Vgt0",
+  //       sizes: "180x180",
+  //       type: "image/png",
+  //     },
+  //   ],
+  // },
 };
 
 const geistSans = Geist({
