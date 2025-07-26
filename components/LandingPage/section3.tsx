@@ -1,3 +1,4 @@
+import { GithubIcon } from "lucide-react";
 import { BookADemoButton, SignUpButton } from "../Buttons";
 import { Button } from "../ui/button";
 
@@ -13,15 +14,15 @@ export default function ReadyToShip() {
         <div className="cta-buttons">
           {/* <SignUpButton /> */}
           <BookADemoButton />
-          <a
+          {/* <a
             href="https://github.com/ib8-dev/langq_flutter?tab=readme-ov-file#lang-q-localization"
             className="btn btn-secondary btn-large"
             target="_blank"
           >
             <Button variant="secondary">View Documentation</Button>
-          </a>
+          </a> */}
           <a
-            href="https://pub.dev/packages/lokalise_flutter_sdk"
+            href="https://pub.dev/packages/langq_localization"
             className="btn btn-outline btn-large"
           >
             <Button variant="secondary">pub.dev Package</Button>

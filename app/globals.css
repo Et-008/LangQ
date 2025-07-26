@@ -114,6 +114,7 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --content-min-height: calc(100% - 333px);
+    --glow-ai: rgba(139, 92, 246, 0.3);
 
     --shimmer-hue-1: 213deg;
     --shimmer-sat-1: 95%;
@@ -532,4 +533,46 @@
 
 .key-card:hover .key-actions {
   display: flex;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* background: var(--bg-card); */
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ai-indicator {
+  width: 30px;
+  height: 30px;
+  background: #000000;
+  border-color: var(--destructive);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  animation: pulse-ai 2s infinite;
+}
+
+@keyframes pulse-ai {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--glow-ai);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px transparent;
+  }
 }

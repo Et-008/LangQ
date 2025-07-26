@@ -130,7 +130,7 @@ const Header = () => {
         </div>
         <div className="flex gap-5">
           {/* <ThemeSwitcher /> */}
-          <Button
+          {/* <Button
             asChild
             size="sm"
             variant={"outline"}
@@ -142,17 +142,14 @@ const Header = () => {
             >
               Log in
             </a>
-          </Button>
+          </Button> */}
           <Button
             asChild
             size="sm"
             variant={"default"}
             className="group relative"
           >
-            <a
-              href={`${process.env.NEXT_PUBLIC_APP_DOMAIN}/sign-up`}
-              target="_blank"
-            >
+            <a href={`${process.env.NEXT_PUBLIC_APP_DOMAIN}`} target="_blank">
               Get started for free
             </a>
           </Button>

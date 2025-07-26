@@ -34,6 +34,10 @@ const Footer = () => {
             ©️
           </a>
         </p>
+        {/* <p>
+          If you have any questions or need support, feel free to contact us at
+          founders@getquetzal.com
+        </p> */}
       </div>
       <div>
         <a href="/terms">Terms</a> & <a href="/privacy">Privacy</a>

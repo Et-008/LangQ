@@ -1,47 +1,83 @@
 "use client";
 
+import TypeWriterEffect from "../ui/TypeWriterEffect";
+
 const FeatureCardContent = [
+  // {
+  //   key: "setup",
+  //   icon: "🚀",
+  //   title: "4-Step Setup",
+  //   description:
+  //     "Install, configure API key, pull translations, and start using. That's it. No complex configuration files.",
+  // },
+  // {
+  //   key: "ai-translation",
+  //   icon: "🤖",
+  //   title: "AI Translation Engine",
+  //   description:
+  //     "Powered by advanced AI to deliver context-aware translations that actually make sense in your app.",
+  // },
+  // {
+  //   key: "type-safe",
+  //   icon: "🛡️",
+  //   title: "Type-Safe Keys",
+  //   description:
+  //     "Auto-generated keys with required parameters. Catch translation errors at compile time, not runtime.",
+  // },
+  // {
+  //   key: "sync",
+  //   icon: "🔄",
+  //   title: "Automatic Sync",
+  //   description:
+  //     "One command pulls all translations. No manual file management. Always stay in sync with your team.",
+  // },
+  // {
+  //   key: "pluralization",
+  //   icon: "🔢",
+  //   title: "Advanced Pluralization",
+  //   description:
+  //     "Handle complex plural rules for any language, including nested plurals. We've got the edge cases covered.",
+  // },
+  // {
+  //   key: "formatting",
+  //   icon: "💰",
+  //   title: "Built-in Formatting",
+  //   description:
+  //     "Format numbers, dates, currencies, and percentages automatically based on locale. Powered by intl.",
+  // },
   {
-    key: "setup",
-    icon: "🚀",
-    title: "4-Step Setup",
+    key: "problem 1",
+    icon: "📦",
+    title: "Manual file downloads",
     description:
-      "Install, configure API key, pull translations, and start using. That's it. No complex configuration files.",
+      "Download ZIP files, extract, copy to assets, update pubspec.yaml, repeat for every update.",
   },
   {
-    key: "ai-translation",
-    icon: "🤖",
-    title: "AI Translation Engine",
-    description:
-      "Powered by advanced AI to deliver context-aware translations that actually make sense in your app.",
-  },
-  {
-    key: "type-safe",
-    icon: "🛡️",
-    title: "Type-Safe Keys",
-    description:
-      "Auto-generated keys with required parameters. Catch translation errors at compile time, not runtime.",
-  },
-  {
-    key: "sync",
-    icon: "🔄",
-    title: "Automatic Sync",
-    description:
-      "One command pulls all translations. No manual file management. Always stay in sync with your team.",
-  },
-  {
-    key: "pluralization",
+    key: "problem 2",
     icon: "🔢",
-    title: "Advanced Pluralization",
-    description:
-      "Handle complex plural rules for any language, including nested plurals. We've got the edge cases covered.",
+    title: "Broken plural handling",
+    description: `"1 items" anyone? Most tools can't handle complex plurals or nested cases that real apps need.`,
   },
   {
-    key: "formatting",
-    icon: "💰",
-    title: "Built-in Formatting",
+    key: "problem 5",
+    icon: "🔧",
+    title: "Multiple tools juggling",
     description:
-      "Format numbers, dates, currencies, and percentages automatically based on locale. Powered by intl.",
+      "One tool for translations, another for client integration, plus CI/CD scripts. Why can't it just be one simple tool?",
+  },
+  {
+    key: "problem 3",
+    icon: "💥",
+    title: "Magic strings everywhere",
+    description:
+      "Runtime crashes from typos, no auto-complete, no compile-time safety. Welcome to localization hell.",
+  },
+  {
+    key: "problem 4",
+    icon: "⏰",
+    title: "Hours wasted on setup",
+    description:
+      "Spending more time configuring localization than building features. There has to be a better way.",
   },
 ];
 
@@ -224,9 +260,13 @@ export default function EverythingYouNeed() {
 
   return (
     <section className="features">
-      <h2 className="text-2xl lg:text-3xl">
-        Everything You Need, Nothing You Don't
+      <h2 className="section-title text-4xl lg:text-5xl">
+        <TypeWriterEffect words={["Why Flutter Developers Struggle ?"]} />
       </h2>
+      <p className="section-subtitle">
+        We've felt your pain and solved it at Lang Q.
+      </p>
+
       <div className="feature-grid">
         {FeatureCardContent?.map((featureCard) => {
           const { icon, title, key, description } = featureCard;
