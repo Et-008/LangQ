@@ -7,6 +7,7 @@
   /* --light-gray: #f3f4f6; */
   --white: #ffffff;
   --bg-dark: #0b1426;
+  --bg-darker: #060b16;
   /* --gradient: linear-gradient(135deg, #0468d7 0%, #00d7ff 100%); */
 
   --bg-card: #1a2332;
@@ -246,11 +247,13 @@
 
 .card:hover::after {
   filter: blur(30px);
-  background: linear-gradient(-45deg, #0ea5e9 0%, #0ea5e9 100%);
+  /* background: linear-gradient(-45deg, #0ea5e9 0%, #0ea5e9 100%); */
+  background: linear-gradient(-45deg, #ef4444, #dc2626 100%);
 }
 
 .card:hover::before {
-  background: linear-gradient(-45deg, #0ea5e9 0%, #0ea5e9 100%);
+  background: linear-gradient(-45deg, #ef4444, #dc2626 100%);
+  /* background: linear-gradient(-45deg, #0ea5e9 0%, #0ea5e9 100%); */
   /* transform: rotate(-90deg) scaleX(0.72) scaleY(1.4); */
   /* transform: rotate(-90deg) scaleX(1.34) scaleY(0.77); */
 }
@@ -405,7 +408,7 @@
 /* CTA Section */
 .cta-section {
   padding: 6rem 0;
-  /* background: var(--bg-darker); */
+  background: var(--bg-darker);
   text-align: center;
 }
 
@@ -455,7 +458,7 @@
 }
 
 .solution-card {
-  /* background: var(--bg-card); */
+  background: #000000;
   /* border-radius: 20px; */
   border-radius: 7px 7px 20px 20px;
   padding: 2.5rem 1.5rem;

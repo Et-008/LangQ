@@ -9,7 +9,7 @@ export default function HowitWorks() {
 
         <div className="steps-container">
           <div className="step">
-            <div className="step-number">1</div>
+            <div className="step-number blink-light">1</div>
             <div className="step-content">
               <h3 className="step-title">Add Your Strings</h3>
               <p className="step-description">
@@ -45,7 +45,7 @@ export default function HowitWorks() {
           </div>
 
           <div className="step">
-            <div className="step-number">2</div>
+            <div className="step-number blink-light-2">2</div>
             <div className="step-content">
               <h3 className="step-title">AI Translates Instantly</h3>
               <p className="step-description">
@@ -86,7 +86,7 @@ export default function HowitWorks() {
           </div>
 
           <div className="step">
-            <div className="step-number">3</div>
+            <div className="step-number blink-light">3</div>
             <div className="step-content">
               <h3 className="step-title">Pull & Ship</h3>
               <p className="step-description">

@@ -1,5 +1,6 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -21,10 +22,16 @@ const Footer = () => {
   // if (user) {
   return (
     <>
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
-      <div className="py-8">
-        <p className="text-center text-base text-body-color dark:text-white">
-          LanQ Inc.{" "}
+      <a href="/">
+        <p className="flex items-center gap-3 text-center text-base text-body-color dark:text-white">
+          <span className="ai-indicator">Q</span> Lang Q
+        </p>
+      </a>
+      {/* <div>
+        <a href="/terms">Terms</a> & <a href="/privacy">Privacy</a>
+      </div> */}
+      <div className="mb-10 text-center">
+        <div className="text-gray-400 mb-3">
           <a
             href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
             target="_blank"
@@ -32,15 +39,17 @@ const Footer = () => {
             rel="noreferrer"
           >
             ©️
-          </a>
-        </p>
-        {/* <p>
-          If you have any questions or need support, feel free to contact us at
-          founders@getquetzal.com
-        </p> */}
-      </div>
-      <div>
-        <a href="/terms">Terms</a> & <a href="/privacy">Privacy</a>
+          </a>{" "}
+          2025 Lang Q corp, Inc. All Rights Reserved. Crafted with care in
+          California 🌴❤️.
+        </div>
+        <span className="text-gray-400">
+          We're just a message away—contact us at
+          <a href="mailto:team@lang-q.com" className="text-white px-1">
+            team@lang-q.com
+          </a>{" "}
+          if you need help.
+        </span>{" "}
       </div>
     </>
   );

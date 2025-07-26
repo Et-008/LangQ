@@ -3,7 +3,7 @@ import { SignUpButton, BookADemoButton } from "./Buttons";
 export default function Header() {
   return (
     <div>
-      <div className="flex flex-col gap-16 items-center justify-center min-h-[670px]">
+      <div className="flex flex-col gap-16 items-center justify-center min-h-[600px] mb-28">
         <h1 className="sr-only">Lang Q - translator for your business</h1>
         <div>
           <div className="flex items-center w-full justify-center">
@@ -13,6 +13,7 @@ export default function Header() {
             </div>
           </div>
           <div className="hero-header text-5xl lg:text-6xl !leading-tight mx-auto max-w-3xl text-center">
+            Translate{" "}
             {/* <a
               href="/"
               target="_blank"
@@ -23,13 +24,13 @@ export default function Header() {
             </a>{" "}
             &{" "} */}
             <strong className="font-bold blink-light-2" rel="noreferrer">
-              Translate Accurately.
+              Accurately.
             </strong>{" "}
             <br />
-            <p className="p-3"></p>
             <strong className="font-bold blink-light" rel="noreferrer">
-              Localize Effortlessly.
-            </strong>
+              Localize
+            </strong>{" "}
+            Effortlessly.
             {/* Unlock Global Reach. */}
           </div>
         </div>
