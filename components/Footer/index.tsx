@@ -22,34 +22,58 @@ const Footer = () => {
   // if (user) {
   return (
     <>
-      <a href="/">
-        <p className="flex items-center gap-3 text-center text-base text-body-color dark:text-white">
-          <span className="ai-indicator">Q</span> Lang Q
-        </p>
-      </a>
-      {/* <div>
-        <a href="/terms">Terms</a> & <a href="/privacy">Privacy</a>
-      </div> */}
-      <div className="mb-10 text-center">
-        <div className="text-gray-400 mb-3">
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            ©️
-          </a>{" "}
-          2025 Lang Q corp, Inc. All Rights Reserved. Crafted with care in
-          California 🌴❤️.
+      <div className="w-full max-w-5xl px-10 flex pb-10 ml-28 justify-between">
+        <div className="p-4 pl-10 rounded-[20px]">
+          <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
+            <span className="ai-indicator">Q</span> Lang Q
+          </div>
+          <div className="mb-2 text-center">
+            <div className="text-gray-400 mb-3">
+              <a
+                href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
+                target="_blank"
+                className="font-bold hover:underline"
+                rel="noreferrer"
+              >
+                ©️
+              </a>{" "}
+              2025 Lang Q corp, Inc. All Rights Reserved. Crafted with care in
+              California 🌴❤️.
+            </div>
+            <span className="text-gray-400">
+              We're just a message away—contact us at
+              <a href="mailto:team@lang-q.com" className="text-white px-1">
+                team@lang-q.com
+              </a>{" "}
+              if you need help.
+            </span>{" "}
+          </div>
         </div>
-        <span className="text-gray-400">
-          We're just a message away—contact us at
-          <a href="mailto:team@lang-q.com" className="text-white px-1">
-            team@lang-q.com
-          </a>{" "}
-          if you need help.
-        </span>{" "}
+        <div className="px-4 ml-20 mt-5">
+          <div className="mb-2">
+            <h2 className="mb-1 text-sm font-bold text-black dark:text-white">
+              Legal
+            </h2>
+            <ul>
+              <li>
+                <Link
+                  href="/terms"
+                  className="text-xs mb-1 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                >
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy"
+                  className="text-xs mb-1 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                >
+                  Privacy
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );

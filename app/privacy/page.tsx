@@ -64,8 +64,11 @@ const PrivacyPolicy = () => {
           </ul>
           <p className="mt-2">
             To exercise your rights, contact us at:{" "}
-            <a href="mailto:your@email.com" className="text-blue-500 underline">
-              your@email.com
+            <a
+              href="mailto:team@lang-q.com"
+              className="text-blue-500 underline"
+            >
+              team@lang-q.com
             </a>
           </p>
         </div>

@@ -39,8 +39,12 @@ const TermsOfService = () => {
             4. Intellectual Property
           </h2>
           <p>
-            All content on the Service is owned by Lang Q or its licensors. You
-            may not copy, distribute, or use any content without permission.
+            All content on the Service is owned by{" "}
+            <a className="text-sky-500" href="https://lang-q.com">
+              Lang Q{" "}
+            </a>{" "}
+            or its licensors. You may not copy, distribute, or use any content
+            without permission.
           </p>
         </div>
 
@@ -75,16 +79,23 @@ const TermsOfService = () => {
             8. Limitation of Liability
           </h2>
           <p>
-            Lang Q shall not be liable for indirect or consequential damages
-            arising from your use of the Service.
+            <a className="text-sky-500" href="https://lang-q.com">
+              Lang Q{" "}
+            </a>{" "}
+            shall not be liable for indirect or consequential damages arising
+            from your use of the Service.
           </p>
         </div>
 
         <div>
           <h2 className="text-xl font-semibold mb-2">9. Indemnification</h2>
           <p>
-            You agree to indemnify Lang Q against any claims or losses resulting
-            from your violation of these Terms.
+            You agree to indemnify{" "}
+            <a className="text-sky-500" href="https://lang-q.com">
+              Lang Q{" "}
+            </a>{" "}
+            against any claims or losses resulting from your violation of these
+            Terms.
           </p>
         </div>
 

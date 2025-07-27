@@ -22,5 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/404`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.2,
+    },
   ];
 }

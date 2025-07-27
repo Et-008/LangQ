@@ -8,6 +8,7 @@
   --white: #ffffff;
   --bg-dark: #0b1426;
   --bg-darker: #060b16;
+  --glow-shadow-ai: rgba(139, 92, 246, 0.3);
   /* --gradient: linear-gradient(135deg, #0468d7 0%, #00d7ff 100%); */
 
   --bg-card: #1a2332;
@@ -481,7 +482,7 @@
 
 .solution-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px var(--glow-ai);
+  box-shadow: 0 20px 40px var(--glow-shadow-ai);
   border-color: var(--primary-blue);
 }
 

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 function PricingPage() {
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto p-6 absolute z-50">
+    <div className="w-full h-[620px] max-w-6xl ml-auto mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto p-6 absolute z-40">
         <div className="flex flex-col gap-20">
           <div
             key={"Starter"}
@@ -27,7 +27,7 @@ function PricingPage() {
             <p className="text-3xl font-semibold mb-4">$0/mo</p>
             <ul className="space-y-2 mb-6">
               {[
-                "1000 translations",
+                "1000 translation credits",
                 "30 Languages",
                 "10 Projects",
                 "Instant translation",
@@ -73,7 +73,8 @@ function PricingPage() {
         fontSize="2rem"
         mouseConstraintStiffness={0.9}
       />
-    </>
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
+    </div>
   );
 }
 

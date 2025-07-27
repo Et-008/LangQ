@@ -272,7 +272,7 @@ const FallingText: React.FC<FallingTextProps> = ({
           lineHeight: 1.4,
           width: "400px",
           height: "269px",
-          left: "356px",
+          left: "376px",
           zIndex: -1,
         }}
       />
