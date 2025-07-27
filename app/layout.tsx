@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Geist, Manrope } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { createClient } from "@/utils/supabase/server";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -142,6 +143,7 @@ export default function RootLayout({
 
         <div id="portal-root" />
       </body>
+      <GoogleAnalytics gaId="G-H0R13L4J67" />
     </html>
   );
 }
