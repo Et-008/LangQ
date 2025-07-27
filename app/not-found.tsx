@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Image404 from "../../public/svg/404.svg";
+import Image404 from "../public/svg/404.svg";
 import { Button } from "@/components/ui/button";
 
 const defaultUrl = process.env.VERCEL_URL
