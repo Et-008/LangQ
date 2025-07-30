@@ -120,7 +120,9 @@ export default function RootLayout({
               <div
                 className={`${User ? "" : ""} w-full grow p-5 flex justify-center`}
               >
-                <div className="flex flex-col gap-20 p-5 grow">{children}</div>
+                <div className="w-full flex flex-col gap-20 p-5 grow">
+                  {children}
+                </div>
               </div>
               <Footer />
 

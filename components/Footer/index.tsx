@@ -22,12 +22,12 @@ const Footer = () => {
   // if (user) {
   return (
     <>
-      <div className="w-full max-w-5xl px-10 flex pb-10 ml-28 justify-between">
-        <div className="p-4 pl-10 rounded-[20px]">
+      <div className="w-full max-w-5xl px-10 flex flex-col md:flex-row pb-10 lg:ml-28 justify-between">
+        <div className="p-4 md:pl-10 rounded-[20px]">
           <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
             <span className="ai-indicator">Q</span> Lang Q
           </div>
-          <div className="mb-2 text-center">
+          <div className="mb-2 md:text-center">
             <div className="text-gray-400 mb-3">
               <a
                 href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
@@ -49,7 +49,7 @@ const Footer = () => {
             </span>{" "}
           </div>
         </div>
-        <div className="px-4 ml-20 mt-5">
+        <div className="px-4 md:ml-20 mt-5">
           <div className="mb-2">
             <h2 className="mb-1 text-sm font-bold text-black dark:text-white">
               Legal

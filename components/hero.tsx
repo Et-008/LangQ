@@ -9,10 +9,10 @@ export default function Header() {
           <div className="flex items-center w-full justify-center">
             <div className="hero-badge">
               <div className="ai-indicator">Q</div>
-              <span>Built by Developers, For Developers</span>
+              <span>Flutter localization made easier</span>
             </div>
           </div>
-          <div className="hero-header text-5xl lg:text-6xl !leading-tight mx-auto max-w-3xl text-center">
+          <div className="hero-header text-3xl md:text-5xl lg:text-6xl !leading-tight mx-auto max-w-3xl text-center">
             Translate{" "}
             {/* <a
               href="/"

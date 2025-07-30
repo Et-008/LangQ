@@ -11,6 +11,14 @@ const config = {
   ],
   prefix: "",
   theme: {
+    screens: {
+      xs: "480px", // Extra small phones
+      sm: "640px", // Small devices (e.g. phones)
+      md: "768px", // Medium devices (e.g. tablets)
+      lg: "1024px", // Large devices (e.g. laptops)
+      xl: "1280px", // Extra large (e.g. desktops)
+      "2xl": "1536px", // 2K+ screens
+    },
     container: {
       center: true,
       padding: "2rem",
