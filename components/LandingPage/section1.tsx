@@ -47,37 +47,37 @@ const FeatureCardContent = [
   // },
   {
     key: "problem 1",
-    icon: "📦",
-    title: "Manual file downloads",
-    description:
-      "Download ZIP files, extract, copy to assets, update pubspec.yaml, repeat for every update.",
-  },
-  {
-    key: "problem 2",
-    icon: "🔢",
-    title: "Broken plural handling",
-    description: `"1 items" anyone? Most tools can't handle complex plurals or nested cases that real apps need.`,
-  },
-  {
-    key: "problem 5",
     icon: "🔧",
     title: "Multiple tools juggling",
     description:
       "One tool for translations, another for client integration, plus CI/CD scripts. Why can't it just be one simple tool?",
   },
   {
-    key: "problem 3",
-    icon: "💥",
-    title: "Magic strings everywhere",
-    description:
-      "Runtime crashes from typos, no auto-complete, no compile-time safety. Welcome to localization hell.",
-  },
-  {
-    key: "problem 4",
+    key: "problem 2",
     icon: "⏰",
     title: "Hours wasted on setup",
     description:
       "Spending more time configuring localization than building features. There has to be a better way.",
+  },
+  {
+    key: "problem 3",
+    icon: "📦",
+    title: "Manual file downloads",
+    description:
+      "Download ZIP files, extract, copy to assets, update pubspec.yaml, repeat for every update.",
+  },
+  {
+    key: "problem 4",
+    icon: "🔢",
+    title: "Broken plural handling",
+    description: `"1 items" anyone? Most tools can't handle complex plurals or nested cases that real apps need.`,
+  },
+  {
+    key: "problem 5",
+    icon: "💥",
+    title: "Magic strings everywhere",
+    description:
+      "Runtime crashes from typos, no auto-complete, no compile-time safety. Welcome to localization hell.",
   },
 ];
 

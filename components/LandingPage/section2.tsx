@@ -88,7 +88,7 @@ export default function HowitWorks() {
           <div className="step">
             <div className="step-number blink-light">3</div>
             <div className="step-content">
-              <h3 className="step-title">Pull & Ship</h3>
+              <h3 className="step-title">Pull & Use</h3>
               <p className="step-description">
                 One command pulls everything and generates type-safe code. Your
                 IDE auto-completes, your app ships globally.

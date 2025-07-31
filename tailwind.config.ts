@@ -30,6 +30,7 @@ const config = {
       fontFamily: {
         manrope: ["var(--font-manrope)"],
         banilu: ["banilu", "sans-serif"],
+        mono: ["var(--font-mono)"],
       },
       colors: {
         current: "currentColor",

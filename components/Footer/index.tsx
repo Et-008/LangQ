@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
             <span className="ai-indicator">Q</span> Lang Q
           </div>
-          <div className="mb-2 md:text-center">
+          <div className="mb-2 ">
             <div className="text-gray-400 mb-3">
               <a
                 href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
@@ -37,8 +37,8 @@ const Footer = () => {
               >
                 ©️
               </a>{" "}
-              2025 Lang Q corp, Inc. All Rights Reserved. Crafted with care in
-              California 🌴❤️.
+              2025 Lang Q corp, Inc. All Rights Reserved.
+              {/* Crafted with care in California 🌴❤️. */}
             </div>
             <span className="text-gray-400">
               We're just a message away—contact us at

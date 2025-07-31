@@ -10,32 +10,6 @@ export default function ReadyToShip() {
 
         <div className="solutions-grid">
           <div className="solution-card">
-            <div className="solution-icon">🎯</div>
-            <h3>Smart Plurals</h3>
-            <p>
-              Handles impossible cases like "3 cats (each with 2 lives)" that
-              break other tools.
-            </p>
-            <div className="solution-example">
-              <div className="code-line">
-                <span className="comment">
-                  // Nested plurals that just work
-                </span>
-              </div>
-              <div className="code-line">
-                <span className="string">
-                  {`{users} users liked {posts} posts`}
-                </span>
-              </div>
-              <div className="code-line">
-                <span className="highlight-success">
-                  ✓ Handles all languages automatically
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="solution-card">
             <div className="solution-icon">⚡</div>
             <h3>Zero Manual Work</h3>
             <p>
@@ -63,7 +37,7 @@ export default function ReadyToShip() {
 
           <div className="solution-card">
             <div className="solution-icon">🤖</div>
-            <h3>AI That Gets Flutter</h3>
+            <h3>"Contextful" AI Translations</h3>
             <p>
               Context-aware translations that understand your app structure and
               variables.
@@ -71,7 +45,7 @@ export default function ReadyToShip() {
             <div className="solution-example">
               <div className="code-line">
                 <span className="comment">
-                  // AI understands Flutter context
+                  // AI understands your App context
                 </span>
               </div>
               <div className="code-line">
@@ -85,6 +59,32 @@ export default function ReadyToShip() {
               <div className="code-line">
                 <span className="highlight-success">
                   {`🇪🇸 ¡Bienvenido {userName}!`}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="solution-card">
+            <div className="solution-icon">🎯</div>
+            <h3>Smart Plurals</h3>
+            <p>
+              Handles impossible cases like "3 cats (each with 2 lives)" that
+              break other tools.
+            </p>
+            <div className="solution-example">
+              <div className="code-line">
+                <span className="comment">
+                  // Nested plurals that just work
+                </span>
+              </div>
+              <div className="code-line">
+                <span className="string">
+                  {`{users} users liked {posts} posts`}
+                </span>
+              </div>
+              <div className="code-line">
+                <span className="highlight-success">
+                  ✓ Handles all languages automatically
                 </span>
               </div>
             </div>

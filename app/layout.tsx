@@ -1,10 +1,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Geist, Manrope } from "next/font/google";
+import { Geist, Manrope, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { createClient } from "@/utils/supabase/server";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
+import MouseParticles from "@/components/ui/mousePArticles";
+import CanvasParticles from "@/components/ui/particleCanvas";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -16,6 +18,12 @@ const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-manrope",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
 });
 
 export const metadata = {
@@ -100,7 +108,11 @@ export default function RootLayout({
 }>) {
   getUser();
   return (
-    <html lang="en" className={manrope.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link href="https://fonts.cdnfonts.com/css/banilu" rel="stylesheet" />
       </head>
@@ -121,6 +133,8 @@ export default function RootLayout({
                 className={`${User ? "" : ""} w-full grow p-5 flex justify-center`}
               >
                 <div className="w-full flex flex-col gap-20 p-5 grow">
+                  <MouseParticles />
+                  {/* <CanvasParticles /> */}
                   {children}
                 </div>
               </div>

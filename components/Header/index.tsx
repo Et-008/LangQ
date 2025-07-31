@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <div className="nav-header flex gap-2 flex-1">
-      <div className="flex w-full items-center justify-between px-4">
+      <div className="flex w-full items-center justify-between pl-4">
         <div>
           {/* <button
             onClick={navbarToggleHandler}

@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://acme.com/sitemap.xml",
+    sitemap: "https://lang-q.com/sitemap.xml",
   };
 }

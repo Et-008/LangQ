@@ -324,7 +324,7 @@
   display: flex;
   gap: 3rem;
   margin-bottom: 4rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .step:nth-child(even) {
@@ -407,6 +407,11 @@
 
 .code-line {
   margin-bottom: 0.5rem;
+}
+
+.code-line,
+.code-line * {
+  font-family: var(--font-mono) !important;
 }
 
 .keyword {

@@ -20,11 +20,15 @@ function PricingPage() {
             key={"Starter"}
             className="flex flex-col rounded-2xl p-6 shadow-lg border transition-all border-primary scale-105 justify-center z-30"
           >
-            <div className="mb-2 text-sm font-semibold uppercase tracking-wide text-yellow-300">
+            {/* <div className="mb-2 text-sm font-semibold uppercase tracking-wide text-yellow-300">
               Free for everyone
-            </div>
-            <h3 className="text-2xl font-bold mb-2">Starter</h3>
-            <p className="text-3xl font-semibold mb-4">$0/mo</p>
+            </div> */}
+            <h3 className="text-2xl font-bold mb-2">Try it for Free</h3>
+            <p className="text-sm font-semibold mb-4 line-through">
+              conditions apply
+            </p>
+            {/* <h3 className="text-2xl font-bold mb-2">Starter</h3> */}
+            {/* <p className="text-3xl font-semibold mb-4">$0/mo</p> */}
             <ul className="space-y-2 mb-6">
               {[
                 "1000 translation credits",

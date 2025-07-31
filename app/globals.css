@@ -564,6 +564,11 @@
   animation: pulse-ai 2s infinite;
 }
 
+.ai-indicator svg {
+  width: 70%;
+  height: 70%;
+}
+
 @keyframes pulse-ai {
   0%,
   100% {
@@ -574,5 +579,47 @@
   50% {
     transform: scale(1.05);
     box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+.cls-1 {
+  fill: none;
+}
+.cls-2 {
+  clip-path: url(#clip-path);
+}
+.cls-3 {
+  isolation: isolate;
+  opacity: 0.2;
+}
+.cls-4 {
+  fill: #54c5f8;
+}
+.cls-5 {
+  fill: #01579b;
+}
+.cls-6 {
+  fill: url(#linear-gradient);
+}
+.cls-7 {
+  fill: #29b6f6;
+}
+.cls-8 {
+  fill: url(#radial-gradient);
+}
+
+.particle-ball {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 1;
+  animation: fadeOut 0.6s forwards ease-out;
+  pointer-events: none;
+  /* box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); */
+}
+
+@keyframes fadeOut {
+  to {
+    transform: scale(2);
+    opacity: 0;
   }
 }

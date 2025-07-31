@@ -25,6 +25,7 @@ export default function ReadyToShip() {
             <a
               href="https://pub.dev/packages/langq_localization"
               className="btn btn-outline btn-large"
+              target="_blank"
             >
               <Button variant="secondary">pub.dev Package</Button>
             </a>
