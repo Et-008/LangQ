@@ -115,6 +115,7 @@
     --chart-5: 340 75% 55%;
     --content-min-height: calc(100% - 333px);
     --glow-ai: rgba(127, 84, 228, 1);
+    --custom-glow-ai: rgba(25, 118, 210, 1);
 
     --shimmer-hue-1: 213deg;
     --shimmer-sat-1: 95%;
@@ -573,7 +574,7 @@
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 var(--glow-ai);
+    box-shadow: 0 0 0 0 var(--custom-glow-ai);
   }
 
   50% {

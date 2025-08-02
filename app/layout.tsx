@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { createClient } from "@/utils/supabase/server";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
-import MouseParticles from "@/components/ui/mousePArticles";
+// import MouseParticles from "@/components/ui/mousePArticles";
 import CanvasParticles from "@/components/ui/particleCanvas";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -132,8 +132,8 @@ export default function RootLayout({
               <div
                 className={`${User ? "" : ""} w-full grow p-5 flex justify-center`}
               >
-                <div className="w-full flex flex-col gap-20 p-5 grow">
-                  <MouseParticles />
+                <div className="w-full flex flex-col gap-5 p-5 grow">
+                  {/* <MouseParticles /> */}
                   {/* <CanvasParticles /> */}
                   {children}
                 </div>
