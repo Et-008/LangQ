@@ -1,5 +1,6 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
+import { ContactUs } from "@/components/Forms";
 
 import { Metadata } from "next";
 
@@ -12,13 +13,19 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
-      <Breadcrumb
+      {/* <Breadcrumb
         pageName="Contact Us"
         description="Let's Talk Language – We'd Love to Hear From You!"
-      />
+      /> */}
 
-      <Contact />
-      <section id="contact" className="overflow-hidden py-6 md:py-10 lg:py-18">
+      <ContactUs
+        settings={{
+          w3ckey: "",
+          email: "team@lang-q.com",
+          phone: "+91 8825579642",
+        }}
+      />
+      {/* <section id="contact" className="overflow-hidden py-6 md:py-10 lg:py-18">
         <div
           className="flex flex-wrap w-full mb-12 rounded-sm bg-white px-8 py-11 border shadow-three dark:bg-gray-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
           data-wow-delay=".15s"
@@ -57,7 +64,7 @@ const ContactPage = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

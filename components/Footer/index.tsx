@@ -22,7 +22,7 @@ const Footer = () => {
   // if (user) {
   return (
     <>
-      <div className="w-full max-w-5xl px-10 flex flex-col md:flex-row pb-10 lg:ml-28 justify-between">
+      <div className="w-full max-w-5xl pr-10 flex flex-col md:flex-row pb-10 justify-between">
         <div className="p-4 md:pl-10 rounded-[20px]">
           <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
             <span className="ai-indicator">Q</span> Lang Q
@@ -47,6 +47,31 @@ const Footer = () => {
               </a>{" "}
               if you need help.
             </span>{" "}
+          </div>
+        </div>
+        <div className="px-4 md:ml-20 mt-5">
+          <div className="mb-2">
+            <h2 className="mb-1 text-sm font-bold text-black dark:text-white">
+              Company
+            </h2>
+            <ul>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-xs mb-1 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                >
+                  Contact us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pricing"
+                  className="text-xs mb-1 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                >
+                  Pricing
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="px-4 md:ml-20 mt-5">

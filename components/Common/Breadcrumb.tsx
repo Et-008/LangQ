@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Container from "../Container";
 
 const Breadcrumb = ({
   pageName,
@@ -8,7 +9,7 @@ const Breadcrumb = ({
   description: string;
 }) => {
   return (
-    <>
+    <Container>
       <section className="relative z-10 overflow-hidden pt-28 lg:pt-[150px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
@@ -118,7 +119,7 @@ const Breadcrumb = ({
           </span>
         </div>
       </section>
-    </>
+    </Container>
   );
 };
 
