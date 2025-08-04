@@ -624,3 +624,13 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 785px) {
+  .falling-text {
+    display: none;
+  }
+  .pricing-card {
+    margin: auto;
+    position: static !important;
+  }
+}

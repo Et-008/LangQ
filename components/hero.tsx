@@ -99,7 +99,6 @@ export default function Header() {
             </div>
           </div>
           <div className="hero-header text-3xl md:text-5xl lg:text-6xl !leading-tight mx-auto max-w-3xl text-center">
-            Translate{" "}
             {/* <a
               href="/"
               target="_blank"
@@ -110,13 +109,13 @@ export default function Header() {
             </a>{" "}
             &{" "} */}
             <strong className="font-bold blink-light-2" rel="noreferrer">
-              Accurately.
+              Translate
             </strong>{" "}
-            <br />
+            Accurately. <br />
+            Localize{" "}
             <strong className="font-bold blink-light" rel="noreferrer">
-              Localize
-            </strong>{" "}
-            Effortlessly.
+              Effortlessly.
+            </strong>
             {/* Unlock Global Reach. */}
           </div>
         </div>

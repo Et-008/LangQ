@@ -11,21 +11,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/404`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 0.2,
     },
   ];
