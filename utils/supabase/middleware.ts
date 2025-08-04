@@ -36,7 +36,7 @@ export const updateSession = async (request: NextRequest) => {
     // Create an unmodified response
     let response = NextResponse.next({
       request: {
-        headers: requestHeaders,
+        headers: request.headers,
       },
     });
 
