@@ -16,8 +16,14 @@ import BlogContent from "./blogContent";
 //   // other metadata
 // };
 
-export async function generateMetadata({ params }: PageProps) {
-  const post: any = await getPostData(params?.id);
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { id } = await params;
+  const post: any = await getPostData(id);
 
   return {
     title: post.title,
@@ -25,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `https://lang-q.com/blog/${params?.id || post?.id}`,
+      url: `https://lang-q.com/blog/${id || post?.id}`,
       images: [
         {
           url: post.image || "/default-og.png",
@@ -45,16 +51,13 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 type PageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 const BlogDetailsPage = async ({ params }: PageProps) => {
-  const { id: blogId }: any = params;
+  const { id: blogId }: { id: string } = await params;
   const response: any = await getPostData(blogId);
   const { title, image, content, author, tags, date: publishDate } = response;
-  console.log("Response ", response);
 
   return (
     <>

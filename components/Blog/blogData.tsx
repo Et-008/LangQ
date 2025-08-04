@@ -1,6 +1,6 @@
 import { Blog } from "@/types/blog";
 
-const blogData: Blog[] = [
+const blogData: any[] = [
   {
     id: "unified-localization",
     title:
