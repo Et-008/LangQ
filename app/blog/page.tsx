@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   title: "Lang Q | Articles & Insights on Flutter Localization",
   description:
     "Stay updated with the latest tips, tutorials, and deep dives on localizing Flutter apps. Whether you're building your first multilingual app or scaling translations for millions of users, we’ve got you covered.",
-  // other metadata
+  alternates: {
+    canonical: `https://lang-q.com/blog`,
+  },
 };
 
 const Blog = async () => {

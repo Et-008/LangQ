@@ -47,6 +47,9 @@ export async function generateMetadata({ params }: Props) {
       description: post.description,
       images: [post.image || "/default-og.png"],
     },
+    alternates: {
+      canonical: `https://lang-q.com/blog/${id || post?.id}`,
+    },
   };
 }
 

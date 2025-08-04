@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   title: "Lang Q | Pricing page",
   description:
     "LangQ is a professional translation service started to provide fast, accurate, and culturally-aware translations tailored for businesses looking to scale globally with confidence.",
-  // other metadata
+  alternates: {
+    canonical: `https://lang-q.com/pricing`,
+  },
 };
 
 function PricingPage() {
