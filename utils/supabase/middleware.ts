@@ -9,7 +9,7 @@ export const updateSession = async (request: NextRequest) => {
     const cspHeader = `
     default-src 'self';
     connect-src 'self' https://api.chanty.com https://ymsreanckxyrthosfqiq.supabase.co;
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https: http: ${
+    script-src 'self' unsafe-inline 'strict-dynamic' https: http: ${
       process.env.NODE_ENV === "production" ? "" : `'unsafe-eval'`
     };
     style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com;
