@@ -67,8 +67,8 @@ const Breadcrumb = ({
                   y2="-97.1485"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stopColor="#4A6CF7" />
-                  <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
+                  <stop stopColor="#fdfdfd" />
+                  <stop offset="1" stopColor="#fdfdfd" stopOpacity="0" />
                 </linearGradient>
               </defs>
             </svg>
