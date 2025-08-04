@@ -5,33 +5,33 @@ export const updateSession = async (request: NextRequest) => {
   // This `try/catch` block is only here for the interactive tutorial.
   // Feel free to remove once you have Supabase connected.
   try {
-    const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-    const cspHeader = `
-    default-src 'self';
-    connect-src 'self' https://api.chanty.com https://ymsreanckxyrthosfqiq.supabase.co;
-    script-src 'self' unsafe-inline 'strict-dynamic' https: http: ${
-      process.env.NODE_ENV === "production" ? "" : `'unsafe-eval'`
-    };
-    style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com;
-    img-src 'self' blob: data:;
-    font-src 'self' https://fonts.cdnfonts.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-`;
-    // Replace newline characters and spaces
-    const contentSecurityPolicyHeaderValue = cspHeader
-      .replace(/\s{2,}/g, " ")
-      .trim();
+    //     const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+    //     const cspHeader = `
+    //     default-src 'self';
+    //     connect-src 'self' https://api.chanty.com https://ymsreanckxyrthosfqiq.supabase.co;
+    //     script-src 'self' unsafe-inline 'strict-dynamic' https: http: ${
+    //       process.env.NODE_ENV === "production" ? "" : `'unsafe-eval'`
+    //     };
+    //     style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com;
+    //     img-src 'self' blob: data:;
+    //     font-src 'self' https://fonts.cdnfonts.com;
+    //     object-src 'none';
+    //     base-uri 'self';
+    //     form-action 'self';
+    //     frame-ancestors 'none';
+    //     upgrade-insecure-requests;
+    // `;
+    //     // Replace newline characters and spaces
+    //     const contentSecurityPolicyHeaderValue = cspHeader
+    //       .replace(/\s{2,}/g, " ")
+    //       .trim();
 
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-nonce", nonce);
-    requestHeaders.set(
-      "Content-Security-Policy",
-      contentSecurityPolicyHeaderValue
-    );
+    //     const requestHeaders = new Headers(request.headers);
+    //     requestHeaders.set("x-nonce", nonce);
+    //     requestHeaders.set(
+    //       "Content-Security-Policy",
+    //       contentSecurityPolicyHeaderValue
+    //     );
 
     // Create an unmodified response
     let response = NextResponse.next({
@@ -40,10 +40,10 @@ export const updateSession = async (request: NextRequest) => {
       },
     });
 
-    response.headers.set(
-      "Content-Security-Policy",
-      contentSecurityPolicyHeaderValue
-    );
+    // response.headers.set(
+    //   "Content-Security-Policy",
+    //   contentSecurityPolicyHeaderValue
+    // );
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
