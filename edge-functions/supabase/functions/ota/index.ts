@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { hashKeySecret, validateToken } from "../services/api_auth/api_key_generator.ts";
+import { validateToken } from "../services/api_auth/api_key_generator.ts";
 import { supabase } from "../utils/supabase_client.ts";
 
 
@@ -10,18 +10,17 @@ serve(async (req) => {
     return new Response(JSON.stringify({ error: "Missing API Key" }), { status: 401 });
   }
 
-  const { keyId, keySecret } = validateToken(auth)
+  const tokenValue = validateToken(auth)
 
-  if (!keyId || !keySecret) {
+  if (!tokenValue) {
     return new Response(JSON.stringify({ error: "Invalid format" }), { status: 400 });
   }
-  const hashed = hashKeySecret(keySecret);
 
   const { data, error } = await supabase
     .from("api_keys")
     .select("project_id")
-    .eq("key_id", keyId)
-    .eq("key_hash", hashed)
+    .eq("key_id", tokenValue.keyId)
+    .eq("key_hash", tokenValue.hash)
     .eq("revoked", false)
     .maybeSingle();
 
