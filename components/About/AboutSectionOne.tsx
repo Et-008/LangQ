@@ -48,7 +48,7 @@ const AboutSectionOne = () => {
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
                 title="Who We Are"
-                paragraph="LangQ is a cutting-edge translation and localization platform designed for startups, SaaS companies, and businesses aiming to expand their global reach. Built with modern technologies like Next.js and Tailwind CSS, our platform offers a seamless and developer-friendly experience, ensuring that your content resonates with diverse audiences."
+                paragraph="Lang Q is a cutting-edge translation and localization platform designed for startups, SaaS companies, and businesses aiming to expand their global reach. Built with modern technologies like Next.js and Tailwind CSS, our platform offers a seamless and developer-friendly experience, ensuring that your content resonates with diverse audiences."
                 mb="44px"
               />
 

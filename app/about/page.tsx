@@ -13,7 +13,7 @@ import { RequestACallBack } from "@/components/Buttons";
 export const metadata: Metadata = {
   title: "Lang Q | Who are we and what we do...",
   description:
-    "LangQ is a professional translation service started to provide fast, accurate, and culturally-aware translations tailored for businesses looking to scale globally with confidence.",
+    "Lang Q is a professional translation service started to provide fast, accurate, and culturally-aware translations tailored for businesses looking to scale globally with confidence.",
   // other metadata
 };
 

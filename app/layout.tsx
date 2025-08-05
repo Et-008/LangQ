@@ -28,9 +28,9 @@ const mono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "LangQ | Home",
+  title: "Lang Q | Flutter Localization Tool",
   description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
-  keywords: ["LangQ", "Translate", "Internationalisation"],
+  keywords: ["Lang Q", "Translate", "Internationalisation"],
   authors: [{ name: "ArunEt" }, { name: "Arun", url: "https://et-008.in/" }],
   creator: "Arun Et",
   publisher: "Arun Et",
@@ -42,10 +42,10 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "LangQ",
+    title: "Lang Q",
     description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
     url: defaultUrl,
-    siteName: "LangQ",
+    siteName: "Lang Q",
     // images: [
     //   {
     //     url: "https://ymsreanckxyrthosfqiq.supabase.co/storage/v1/object/sign/langq/ogImage.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hNjcwMDQxYS03MDUyLTQ1ZDUtOWJkOS0xMjMzY2Q0NjM1ZmYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5ncS9vZ0ltYWdlLnBuZyIsImlhdCI6MTc1MDY5NzYwOCwiZXhwIjoxNzgyMjMzNjA4fQ.hcCYnNnyNtG1RHLavc4H6--iPs1GHx6XduMpiTpMBoc",

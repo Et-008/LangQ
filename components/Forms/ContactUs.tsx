@@ -65,7 +65,7 @@ export default function Contact({ settings }: { settings: any }) {
       <div className="grid my-10 md:grid-cols-2">
         <div className="my-10">
           <h2 className="text-2xl font-semibold dark:text-white">
-            Contact LangQ
+            Contact Lang Q
           </h2>
           <p className="max-w-sm mt-5">
             Have something to say? We are here to help. Fill up the form or send

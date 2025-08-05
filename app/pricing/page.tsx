@@ -7,7 +7,7 @@ import { RequestACallBack, SignUpButton } from "../../components/Buttons";
 export const metadata: Metadata = {
   title: "Lang Q | Pricing page",
   description:
-    "LangQ is a professional translation service started to provide fast, accurate, and culturally-aware translations tailored for businesses looking to scale globally with confidence.",
+    "Lang Q is a professional translation service started to provide fast, accurate, and culturally-aware translations tailored for businesses looking to scale globally with confidence.",
   alternates: {
     canonical: `https://lang-q.com/pricing`,
   },

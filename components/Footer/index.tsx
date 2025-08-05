@@ -124,7 +124,7 @@ const Footer = () => {
                   width={140}
                   height={30}
                 /> */}
-                <h3>LangQ</h3>
+                <h3>Lang Q</h3>
               </Link>
               <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                 We’re excited to help you grow your business with the power of
