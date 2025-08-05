@@ -70,7 +70,7 @@ const FeatureCardContent = [
     key: "problem 4",
     icon: "🔢",
     title: "Broken plural handling",
-    description: `"1 items" anyone? Most tools can't handle complex plurals or nested cases that real apps need.`,
+    description: `"1 item(s)" anyone? Most tools can't handle complex plurals or nested cases that real apps need.`,
   },
   {
     key: "problem 5",

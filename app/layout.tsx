@@ -8,7 +8,9 @@ import "./globals.css";
 // import MouseParticles from "@/components/ui/mousePArticles";
 import CanvasParticles from "@/components/ui/particleCanvas";
 
-const defaultUrl =  "http://localhost:3000";
+const defaultUrl = process.env.VERCEL_URL
+  ? `${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : "http://localhost:3000";
 
 let User: any;
 
