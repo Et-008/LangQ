@@ -27,9 +27,14 @@ export function createApiKey(): {
 }
 
 
-export function validateToken(auth: string) {
-  const token = auth.slice(7); // strip "Bearer "
-  const [keyId, keySecret] = token.split(".");
+export function validateToken(auth: string): { keyId: string; hash: string; } | null {
+  try {
+    const token = auth.slice(7); // strip "Bearer "
+    const [keyId, keySecret] = token.split(".");
+    const hash = hashKeySecret(keySecret);
 
-  return { keyId, keySecret }
+    return { keyId, hash }
+  } catch (_) {
+    return null;
+  }
 }
