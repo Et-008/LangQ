@@ -73,10 +73,10 @@ export default function Contact({ settings }: { settings: any }) {
           </p>
 
           <div className="mt-5">
-            <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
+            {/* <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
               <MapPinIcon size="20" className="relative" />
               <span>2, Hacker way, CA.</span>
-            </div>
+            </div> */}
             {settings?.email && (
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
                 <EnvelopeIcon size="20" className="relative" />

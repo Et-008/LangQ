@@ -9,8 +9,7 @@ export default function ReadyToShip() {
         <div className="containere">
           <h2 className="cta-title">Ready to Fix Flutter Localization?</h2>
           <p className="cta-subtitle">
-            Join millions of Flutter developers who've ditched manual
-            translation management for something that actually works.
+            Streamline your Flutter localization with a solution designed to replace manual translation management.
           </p>
           <div className="cta-buttons">
             {/* <SignUpButton /> */}
@@ -27,7 +26,7 @@ export default function ReadyToShip() {
               className="btn btn-outline btn-large"
               target="_blank"
             >
-              <Button variant="secondary">pub.dev Package</Button>
+              <Button variant="secondary">pub.dev</Button>
             </a>
           </div>
         </div>

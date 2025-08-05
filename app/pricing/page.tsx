@@ -60,9 +60,9 @@ function PricingPage() {
         </div>
         <FallingText
           // text="We want to show big user growth to investors or the public."
-          text="We offer everything free, we’ll figure out monetization later."
+          text="Everything's free for now, we're still working on a pricing model."
           // revealText="The best marketing is a product people can use immediately."
-          revealText="We give a reasonable free plan, contact us for a custom one!"
+          revealText="You get free credits to start, reach out if you need more!"
           highlightWords={[
             "everything",
             "free",

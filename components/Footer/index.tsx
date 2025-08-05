@@ -25,7 +25,7 @@ const Footer = () => {
       <div className="w-full max-w-5xl pr-10 flex flex-col md:flex-row pb-10 justify-between">
         <div className="p-4 md:pl-10 rounded-[20px]">
           <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
-            <span className="ai-indicator">Q</span> Lang Q
+            Lang Q
           </div>
           <div className="mb-2 ">
             <div className="text-gray-400 mb-3">
@@ -37,15 +37,14 @@ const Footer = () => {
               >
                 ©️
               </a>{" "}
-              2025 Lang Q corp, Inc. All Rights Reserved.
+              2025 Lang Q. All Rights Reserved.
               {/* Crafted with care in California 🌴❤️. */}
             </div>
             <span className="text-gray-400">
-              We're just a message away—contact us at
+              We're just a message away, feel free to contact us at
               <a href="mailto:team@lang-q.com" className="text-white px-1">
                 team@lang-q.com
-              </a>{" "}
-              if you need help.
+              </a>{""}
             </span>{" "}
           </div>
         </div>

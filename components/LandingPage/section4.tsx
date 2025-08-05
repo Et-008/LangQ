@@ -2,10 +2,10 @@ export default function ReadyToShip() {
   return (
     <section className="cta-section">
       <div className="containere">
-        <h2 className="section-title">What Makes Us Different!</h2>
+        <h2 className="section-title">Flutter Localization, Simplified!</h2>
         <p className="cta-subtitle">
-          Localization that just works! Built specifically for <br />
-          <strong className="blink-light">Flutter</strong> developers.
+          Finally, a tool that just works.<br />
+          <strong className="blink-light">Built for Flutter</strong>.
         </p>
 
         <div className="solutions-grid">
@@ -54,7 +54,7 @@ export default function ReadyToShip() {
               </div>
               <div className="code-line">
                 <span className="property">Context:</span>{" "}
-                <span className="string">"MaterialApp greeting"</span>
+                <span className="string">"Professional greeting"</span>
               </div>
               <div className="code-line">
                 <span className="highlight-success">

@@ -5,8 +5,8 @@ import section4 from "./section4";
 import "./sections.css";
 
 const sections = [
-  { name: "Why Flutter Developers Struggle", content: section1 },
-  { name: "What Makes Us Different", content: section4 },
+  { name: "Why is Flutter localization so painful", content: section1 },
+  { name: "Flutter Localization, Simplified", content: section4 },
   { name: "How it works", content: section2 },
   { name: "Ready to Ship", content: section3 },
 ];

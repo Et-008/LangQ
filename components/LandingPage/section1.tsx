@@ -261,10 +261,10 @@ export default function EverythingYouNeed() {
   return (
     <section className="features">
       <h2 className="section-title text-4xl lg:text-5xl">
-        <TypeWriterEffect words={["Why Flutter Developers Struggle ?"]} />
+        <TypeWriterEffect words={["Why is Flutter localization so painful?"]} />
       </h2>
       <p className="section-subtitle">
-        We've felt your pain and solved it at Lang Q.
+        We've been there too!
       </p>
 
       <div className="feature-grid">
