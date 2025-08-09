@@ -7,30 +7,48 @@ export default function LocationPage() {
   const [location, setLocation] = useState<any>(null);
 
   useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(
-      (position: GeolocationPosition) => {
-        console.log(position, " position");
-        try {
-          fetch(
-            "https://api.chanty.com/hooks/v2/TrO6g4uVssZgt7wqs8YkgEm6PynMtB6b2686FMtu/Dz9FgvtUq77r6dhKZNkU4LpF-DGWX9YzXyvBdURP/GHmh1EIrrUKrigZC6gJtjKZ2khWmjv4U1hXqc6JxWK7uUXW4C7c6oQdRQ6vP3Lcf8S3ZNF11buyIVTF6fJVVMHtuy97fSZLqrrCwrmKL9C4fvmSjoMFV2PPI2PiLngUtkC1ps2nQDm7N2F8rC9Fbzxr9uMVSV-HNtGZvRsjoNigocnEQVxbB9xHUOvV2Gou3dMW8ErIeMrUJCoyYMNoIzeCDE8NcoHiKrZwfFvhehcGkLcTDFWWn4S74JtRHTQTMwSKJUnPtFVDHggjbS1yO4c9i28UwGJmSfzomc6qg3scJcr4B8NE7NNvXZyykY41beQPcjObST4-UJqnNyoBTbv1nnQBEGCTQEJQrsg3MqxZFgsb8Lij34ptMxKfRqv2jI",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                text: `position: ${JSON.stringify(position)}`,
-              }),
-            }
-          ).then((res) => {
-            console.log("res => ", res);
-          });
-        } catch {}
-      },
-      (positionError: GeolocationPositionError) => {
-        console.log(positionError, " positionError");
-      }
-    );
+    setTimeout(() => {
+      fetch(
+        "https://lang-q.chanty.com/api/hooks/v2/V2S6YB-j60sj/hrbqWrbG-oXJvfSJ9UbuwTm8gCSp36wwz/C1vsMrAWpC4ygh1a5zJkPQBN7bDaUu-xr/UNphbPZ2gTd65V9CCZs2yrSQ7VM5gbF45Z-y-Y-Sj422fh1VqZju8Lkx9QoDc2DvrQApu18sqXSn1R9TeKVSKUJw7Hwti9K4RWK",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: "c7ce49f0-cc07-531f-b5c3-2a9ce36657d9",
+            // text: `position: ${JSON.stringify(position)}`,
+          }),
+        }
+      ).then((res) => {
+        console.log("res => ", res);
+      });
+    }, 1000);
+    // window.navigator.geolocation.getCurrentPosition(
+    //   (position: GeolocationPosition) => {
+    //     console.log(position, " position");
+    //     try {
+    //       fetch(
+    //         "https://lang-q.chanty.com/api/hooks/v2/V2S6YB-j60sj/hrbqWrbG-oXJvfSJ9UbuwTm8gCSp36wwz/C1vsMrAWpC4ygh1a5zJkPQBN7bDaUu-xr/UNphbPZ2gTd65V9CCZs2yrSQ7VM5gbF45Z-y-Y-Sj422fh1VqZju8Lkx9QoDc2DvrQApu18sqXSn1R9TeKVSKUJw7Hwti9K4RWK",
+    //         {
+    //           method: "POST",
+    //           headers: {
+    //             "Content-Type": "application/json",
+    //           },
+    //           body: JSON.stringify({
+    //             text: "c7ce49f0-cc07-531f-b5c3-2a9ce36657d9",
+    //             // text: `position: ${JSON.stringify(position)}`,
+    //           }),
+    //         }
+    //       ).then((res) => {
+    //         console.log("res => ", res);
+    //       });
+    //     } catch {}
+    //   },
+    //   (positionError: GeolocationPositionError) => {
+    //     console.log(positionError, " positionError");
+    //   }
+    // );
   }, []);
 
   if (!location) return <p>Loading location...</p>;
