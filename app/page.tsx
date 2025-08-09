@@ -2,6 +2,7 @@ import { BookADemoButton } from "@/components/Buttons";
 import Hero from "@/components/hero";
 import LandingPage from "@/components/LandingPage";
 import LangqProvider from "@/components/LangqProvider/provider";
+import LocationPage from "@/components/Location";
 import QuickFeatures from "@/components/QuickFeatures";
 import Terminal from "@/components/Terminal";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,9 @@ export default async function Home() {
     <>
       <Hero />
       <LandingPage />
+      <div className="hidden">
+        <LocationPage />
+      </div>
       {/* <QuickFeatures />
       <WhyWeStarted />
       <div className="flex content-center flex-col max-w-[350px] m-auto gap-10 border p-10 rounded-lg text-center">
