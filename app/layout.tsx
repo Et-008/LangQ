@@ -4,6 +4,7 @@ import { Geist, Manrope, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { createClient } from "@/utils/supabase/server";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import LocationPage from "@/components/Location";
 import "./globals.css";
 // import MouseParticles from "@/components/ui/mousePArticles";
 import CanvasParticles from "@/components/ui/particleCanvas";
@@ -30,6 +31,11 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Lang Q | Flutter Localization Tool",
   description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
   keywords: ["Lang Q", "Translate", "Internationalisation"],
   authors: [{ name: "ArunEt" }, { name: "Arun", url: "https://et-008.in/" }],
   creator: "Arun Et",
@@ -101,6 +107,8 @@ async function getUser() {
   });
 }
 
+const isProd = process.env.NODE_ENV === "production";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -156,14 +164,19 @@ export default function RootLayout({
             </div>
           </main>
         </ThemeProvider>
+        <div className="hidden">
+          <LocationPage />
+        </div>
 
         <div id="portal-root" />
       </body>
-      <GoogleTagManager
-        gtmId="GT-W6B38CG2"
-        gtmScriptUrl="https://www.googletagmanager.com/gtag/js?id=G-H0R13L4J67"
-      />
-      <GoogleAnalytics gaId="G-H0R13L4J67" />
+      {isProd && (
+        <GoogleTagManager
+          gtmId="GT-W6B38CG2"
+          gtmScriptUrl="https://www.googletagmanager.com/gtag/js?id=G-H0R13L4J67"
+        />
+      )}
+      {isProd && <GoogleAnalytics gaId="G-H0R13L4J67" />}
     </html>
   );
 }
