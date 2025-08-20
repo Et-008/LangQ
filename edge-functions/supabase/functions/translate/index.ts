@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import { supabase } from "../utils/supabase_client.ts";
 import { openAiTranslation } from "../services/translation/openai_translation.ts";
 import { generatePluralICU } from "../services/icu_generator.ts";
+import { geminiTranslation } from "../services/translation/gemini_translation.ts";
 
 console.info('server started');
 
@@ -47,7 +48,7 @@ serve(async (req) => {
       icuMessage = await generatePluralICU(record.value, record.plurals) ?? record.value
     }
 
-    const translatedData = await openAiTranslation.translate({
+    const translatedData = await geminiTranslation.translate({
       id: record?.id,
       name: record?.name,
       value: icuMessage,

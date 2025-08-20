@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import {validateToken} from "../services/api_auth/api_key_generator.ts";
+import { validateToken } from "../services/api_auth/api_key_generator.ts";
 import { supabase } from "../utils/supabase_client.ts";
 
 serve(async (req) => {
@@ -38,7 +38,7 @@ serve(async (req) => {
     const languages: string[] = data?.projects.languages;
 
     const translationResponse = await supabase.from("keys").select(
-      "id, name, translations",
+      "id, name, translations, extract(*)",
     ).eq("project_id", projectId);
 
     if (!translationResponse.data) {
@@ -70,6 +70,9 @@ serve(async (req) => {
           translations,
           base_language: data?.projects.base_language,
           version: data?.projects.version,
+          extract_data: translationResponse.data.map((e) => {
+            return { key_id: e.id, key_name: e.name, extract: e.extract };
+          })
         },
       ),
 

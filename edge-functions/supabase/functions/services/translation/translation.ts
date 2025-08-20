@@ -31,7 +31,7 @@ export function generateTask(input: TranslationInput) {
     };
 }
 
-const jsonSchema = {
+export const jsonSchema = {
     "type": "object",
     "properties": {
         "translations": {
