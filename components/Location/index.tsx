@@ -8,8 +8,8 @@ export default function LocationPage() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      const iseNewVisitSent = localStorage.getItem("newVisit");
-      const isLocationSent = localStorage.getItem("locationSent");
+      const iseNewVisitSent = sessionStorage.getItem("newVisit");
+      // const isLocationSent = sessionStorage.getItem("locationSent");
       if (!iseNewVisitSent) {
         try {
           const supabase = createClient();
@@ -84,36 +84,36 @@ export default function LocationPage() {
             }),
           }
         ).then((res) => {
-          localStorage.setItem("newVisit", "true");
+          sessionStorage.setItem("newVisit", "true");
           console.log("res => ", res);
         });
       }
-      window.navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          if (!isLocationSent) {
-            try {
-              fetch(
-                "https://api.chanty.com/hooks/v2/61jodpRyP4jtS7Z6sjsqcMBqEthzMIoICzVN7uDy/ItvyYVoP4nPCGMpUrE8q3nsmj8foJyJKPrx8vKkv/JmUfqCsZGDLQZJGw41SnP7dnhVjD8vsZ8qPosi3dj17QmoBBtSPJTBSN1HHkTCuuzS6LYMoNqPdIL-FPXowmwXdCvqeXHrcypkLGTd8xQ3p8ZSLitOLT8voxC3BujkSdUqcgDr-LG36dyeOwdBvR8osTfs3fz2zSVdE39CkwnpTMI-q9xZQPLGVppcHHjbJDTRmirC2YJFuUS34Sk6udJvFPTuIQKJfgpjvN7Z-rLSww1GIgJ-ZvcbFhfR97R8yP2CiQGSFNtXZRpHQg4vN2gRRm3ISPfciCoIqxujcOXjPK1Nc-hDLhcgoTvFxRnDecNK9o4rk1eDcMdDRbRfVbFw7mFPZfoNSfWIfnuLV6eoN1VMo",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    text: `position: ${JSON.stringify(position)}`,
-                  }),
-                }
-              ).then((res) => {
-                localStorage.setItem("locationSent", "true");
-                console.log("res => ", res);
-              });
-            } catch {}
-          }
-        },
-        (positionError: GeolocationPositionError) => {
-          console.log(positionError, " positionError");
-        }
-      );
+      // window.navigator.geolocation.getCurrentPosition(
+      //   (position: GeolocationPosition) => {
+      //     if (!isLocationSent) {
+      //       try {
+      //         fetch(
+      //           "https://api.chanty.com/hooks/v2/61jodpRyP4jtS7Z6sjsqcMBqEthzMIoICzVN7uDy/ItvyYVoP4nPCGMpUrE8q3nsmj8foJyJKPrx8vKkv/JmUfqCsZGDLQZJGw41SnP7dnhVjD8vsZ8qPosi3dj17QmoBBtSPJTBSN1HHkTCuuzS6LYMoNqPdIL-FPXowmwXdCvqeXHrcypkLGTd8xQ3p8ZSLitOLT8voxC3BujkSdUqcgDr-LG36dyeOwdBvR8osTfs3fz2zSVdE39CkwnpTMI-q9xZQPLGVppcHHjbJDTRmirC2YJFuUS34Sk6udJvFPTuIQKJfgpjvN7Z-rLSww1GIgJ-ZvcbFhfR97R8yP2CiQGSFNtXZRpHQg4vN2gRRm3ISPfciCoIqxujcOXjPK1Nc-hDLhcgoTvFxRnDecNK9o4rk1eDcMdDRbRfVbFw7mFPZfoNSfWIfnuLV6eoN1VMo",
+      //           {
+      //             method: "POST",
+      //             headers: {
+      //               "Content-Type": "application/json",
+      //             },
+      //             body: JSON.stringify({
+      //               text: `position: ${JSON.stringify(position)}`,
+      //             }),
+      //           }
+      //         ).then((res) => {
+      //           sessionStorage.setItem("locationSent", "true");
+      //           console.log("res => ", res);
+      //         });
+      //       } catch {}
+      //     }
+      //   },
+      //   (positionError: GeolocationPositionError) => {
+      //     console.log(positionError, " positionError");
+      //   }
+      // );
     }
   }, []);
 
