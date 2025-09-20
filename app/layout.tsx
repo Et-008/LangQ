@@ -174,9 +174,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </main>
         </ThemeProvider>
-        {/* <div className="hidden">
+        <div className="hidden">
           <LocationPage />
-        </div> */}
+        </div>
 
         <div id="portal-root" />
         <noscript>
