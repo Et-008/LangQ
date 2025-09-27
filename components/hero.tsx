@@ -119,9 +119,16 @@ export default function Header() {
             {/* Unlock Global Reach. */}
           </div>
         </div>
-        <div className="flex flex-col gap-1 justify-center items-center max-w-2xl text-center text-lg font-bold">
+        <div className="flex flex-col gap-1 justify-center items-center max-w-2xl text-center text-2xl font-bold">
           {/* <p>Welcome to Lang Q.</p> */}
           <p>One tool. Zero hassle.</p>
+          <div className="max-w-xl text-base font-thin mt-5">
+            <p>
+              Extract hardcoded strings, translate with AI, and generate
+              type-safe code automatically. The fastest way to internationalize
+              your Flutter app.
+            </p>
+          </div>
         </div>
         <div className="flex gap-5">
           <BookADemoButton />

@@ -79,6 +79,13 @@ const FeatureCardContent = [
     description:
       "Runtime crashes from typos, no auto-complete, no compile-time safety. Welcome to localization hell.",
   },
+  {
+    key: "problem 6",
+    icon: "🔍",
+    title: "String Extraction Nightmare",
+    description:
+      "Manually finding and extracting hardcoded strings, missing context, losing track of what needs translation.",
+  },
 ];
 
 export default function EverythingYouNeed() {
@@ -263,9 +270,7 @@ export default function EverythingYouNeed() {
       <h2 className="section-title text-4xl lg:text-5xl">
         <TypeWriterEffect words={["Why is Flutter localization so painful?"]} />
       </h2>
-      <p className="section-subtitle">
-        We've been there too!
-      </p>
+      <p className="section-subtitle">We've been there too!</p>
 
       <div className="feature-grid">
         {FeatureCardContent?.map((featureCard) => {

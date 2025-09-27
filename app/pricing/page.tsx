@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 function PricingPage() {
   return (
-    <div className="w-full h-[620px] max-w-6xl ml-auto mb-10">
-      <div className="flex w-full h-full mb-10">
+    <div className="w-full h-[620px] mb-10">
+      <div className="flex w-full h-full mb-10 justify-center items-center">
         <div className="pricing-card p-6 z-40">
           <div className="w-[260px] flex flex-col gap-20">
             <div
@@ -58,7 +58,7 @@ function PricingPage() {
             </div>
           </div>
         </div>
-        <FallingText
+        {/* <FallingText
           // text="We want to show big user growth to investors or the public."
           text="Everything's free for now, we're still working on a pricing model."
           // revealText="The best marketing is a product people can use immediately."
@@ -79,7 +79,7 @@ function PricingPage() {
           gravity={0.56}
           fontSize="2rem"
           mouseConstraintStiffness={0.9}
-        />
+        /> */}
       </div>
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
     </div>
