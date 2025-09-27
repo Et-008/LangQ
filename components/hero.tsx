@@ -108,13 +108,13 @@ export default function Header() {
               Lightning-Fast
             </a>{" "}
             &{" "} */}
-            <strong className="font-bold blink-light-2" rel="noreferrer">
-              Translate
-            </strong>{" "}
-            Accurately. <br />
-            Localize{" "}
-            <strong className="font-bold blink-light" rel="noreferrer">
-              Effortlessly.
+
+            <strong className="font-bold" rel="noreferrer">
+              Translate Accurately.
+            </strong>
+            <br />
+            <strong className="font-bold" rel="noreferrer">
+              <span style={{ color: "#0071c5" }}>Localize Effortlessly.</span>
             </strong>
             {/* Unlock Global Reach. */}
           </div>

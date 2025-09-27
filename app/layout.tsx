@@ -30,7 +30,8 @@ const mono = JetBrains_Mono({
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Lang Q | Flutter Localization Tool",
-  description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
+  description:
+    "The fastest way to translate and internationalize your Flutter app with AI.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
@@ -49,7 +50,8 @@ export const metadata = {
   },
   openGraph: {
     title: "Lang Q",
-    description: "Translate Lightning-Fast & Accurate. Unlock Global Reach.",
+    description:
+      "The fastest way to translate and internationalize your Flutter app with AI.",
     url: defaultUrl,
     siteName: "Lang Q",
     // images: [
