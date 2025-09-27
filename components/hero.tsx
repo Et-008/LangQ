@@ -114,7 +114,7 @@ export default function Header() {
             </strong>
             <br />
             <strong className="font-bold" rel="noreferrer">
-              <span style={{ color: "#0071c5" }}>Localize Effortlessly.</span>
+              <span style={{ color: "#1da1f2" }}>Localize Effortlessly.</span>
             </strong>
             {/* Unlock Global Reach. */}
           </div>
