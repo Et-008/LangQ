@@ -122,13 +122,13 @@ export default function Header() {
         <div className="flex flex-col gap-1 justify-center items-center max-w-2xl text-center text-lg md:text-xl lg:text-2xl font-bold">
           {/* <p>Welcome to Lang Q.</p> */}
           <p>One tool. Zero hassle.</p>
-          <div className="max-w-base md:max-w-lg lg:max-w-xl text-xs md:text-sm lg:text-base font-thin mt-5">
+          {/* <div className="max-w-base md:max-w-lg lg:max-w-xl text-xs md:text-sm lg:text-base font-thin mt-5">
             <p>
               Extract hardcoded strings, translate with AI, and generate
               type-safe code automatically. The fastest way to internationalize
               your Flutter app.
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col md:flex-row gap-5">
           <BookADemoButton />

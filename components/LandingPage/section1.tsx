@@ -79,13 +79,13 @@ const FeatureCardContent = [
     description:
       "Runtime crashes from typos, no auto-complete, no compile-time safety. Welcome to localization hell.",
   },
-  {
-    key: "problem 6",
-    icon: "🔍",
-    title: "String Extraction Nightmare",
-    description:
-      "Manually finding and extracting hardcoded strings, missing context, losing track of what needs translation.",
-  },
+  // {
+  //   key: "problem 6",
+  //   icon: "🔍",
+  //   title: "String Extraction Nightmare",
+  //   description:
+  //     "Manually finding and extracting hardcoded strings, missing context, losing track of what needs translation.",
+  // },
 ];
 
 export default function EverythingYouNeed() {

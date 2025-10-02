@@ -11,20 +11,23 @@ export default function HowitWorks() {
           <div className="step">
             <div className="step-number blink-light">1</div>
             <div className="step-content">
-              <h3 className="step-title">Extract & Translate Automatically</h3>
+              <h3 className="step-title">Add Your Strings</h3>
+              {/* <h3 className="step-title">Extract & Translate Automatically</h3> */}
               <p className="step-description">
-                One command scans your code, extracts hardcoded strings, and
-                sends them for AI translation with Flutter-specific context.
+                Write your text once in our clean, developer-friendly portal.
+                Add context hints for better AI translations.
+                {/* One command scans your code, extracts hardcoded strings, and
+                sends them for AI translation with Flutter-specific context. */}
               </p>
               <div className="step-demo">
                 <div className="feature-example">
                   <div className="code-line">
                     <span className="comment">
-                      {/* // Portal: Add new translation key */}
-                      // Run once: Extract, translate, and replace
+                      // Portal: Add new translation key
+                      {/* // Run once: Extract, translate, and replace */}
                     </span>
                   </div>
-                  <div className="code-line">
+                  {/* <div className="code-line">
                     <span className="string">
                       $ dart run langq_localization:translate
                     </span>
@@ -51,8 +54,8 @@ export default function HowitWorks() {
                       $ dart run langq_localization:pull
                     </span>{" "}
                     <span className="comment"># Get results</span>
-                  </div>
-                  {/* <div className="code-line">
+                  </div> */}
+                  <div className="code-line">
                     <span className="property">Key:</span>{" "}
                     <span className="string">welcome_message</span>
                   </div>
@@ -67,7 +70,7 @@ export default function HowitWorks() {
                     <span className="string">
                       "Friendly greeting, casual tone"
                     </span>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
