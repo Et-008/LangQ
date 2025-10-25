@@ -119,7 +119,7 @@ const BlogDetailsPage = async ({ params }: any) => {
                         </span>
                         {publishDate}
                       </p>
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color">
+                      {/* <p className="mr-5 flex items-center text-base font-medium text-body-color">
                         <span className="mr-3">
                           <svg
                             width="18"
@@ -147,7 +147,7 @@ const BlogDetailsPage = async ({ params }: any) => {
                           </svg>
                         </span>
                         35
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-5">

@@ -34,7 +34,10 @@ const Blog = async () => {
                 );
               }
               return (
-                <div key={blog.id} className="px-4 md:w-2/3 lg:w-1/2 xl:w-1/3">
+                <div
+                  key={blog.id}
+                  className="px-4 mb-12 md:w-2/3 lg:w-1/2 xl:w-1/3"
+                >
                   <SingleBlog blog={blog} />
                 </div>
               );
