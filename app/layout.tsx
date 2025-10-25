@@ -134,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TJNLM8VS')`,
           }}
         />
-        <link href="https://fonts.cdnfonts.com/css/banilu" rel="stylesheet" />
+        {/* <link href="https://fonts.cdnfonts.com/css/banilu" rel="stylesheet" /> */}
       </head>
       <body
         className="bg-background text-foreground dark:bg-black"
