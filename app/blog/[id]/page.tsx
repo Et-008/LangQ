@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { Blog } from "@/types/blog";
 
 import BlogContent from "./blogContent";
+import { getSortedPostsData } from "../../../lib/posts";
 // import markdownStyles from "./markdown.module.css";
 
 // export const metadata: Metadata = {
@@ -57,9 +58,15 @@ type PageProps = {
   params: Promise<{ id: string }>;
 };
 
-const BlogDetailsPage = async ({ params }: PageProps) => {
-  const { id: blogId }: { id: string } = await params;
-  const response: any = await getPostData(blogId);
+export async function generateStaticParams() {
+  const slugs = getSortedPostsData(); // Function to get all blog post slugs
+  return slugs.map(({ id }) => ({
+    id: id,
+  }));
+}
+
+const BlogDetailsPage = async ({ params }: any) => {
+  const response: any = await getPostData(params?.id);
   const { title, image, content, author, tags, date: publishDate } = response;
 
   return (
@@ -78,7 +85,7 @@ const BlogDetailsPage = async ({ params }: PageProps) => {
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <Image
-                            src="/images/blog/author-02.png"
+                            src={`/images/blog/${author.name}.png`}
                             alt="author"
                             fill
                           />
