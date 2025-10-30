@@ -90,6 +90,7 @@ Use CLI tools or CI/CD to auto-generate platform-specific files from your source
 
 Recommended tools:
 
+- [Lang Q](https://lang-q.com/)
 - [Locize](https://locize.com/)
 - [Phrase](https://phrase.com/)
 - [i18next](https://www.i18next.com/)

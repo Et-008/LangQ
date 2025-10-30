@@ -55,7 +55,7 @@ Start the design of your app with translation and localization in mind. This not
 
 2. Leverage a Translation Management System (TMS)
 
-Don't guess what to translate; leverage a TMS (like Lokalise) to guide and manage the complex process. A TMS helps you:
+Don't guess what to translate; leverage a TMS (like [Lang Q](https://lang-q.com)) to guide and manage the complex process. A TMS helps you:
 
 Maintain a central repository for all languages and keys.
 
