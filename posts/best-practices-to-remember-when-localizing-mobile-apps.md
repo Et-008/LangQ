@@ -37,7 +37,7 @@ Using a language code alone (e.g., `fr` for French) isn't enough. Regional diffe
 
 Avoid the outdated practice of translating keys in a vacuum. Context is crucial for translation quality.
 
-- Use tools like Lokalise to allow linguists to **translate one page at a time with screenshots**, providing immediate context on where the text fits in the UI.
+- Use tools like Lang Q to allow linguists to **translate one page at a time with screenshots**, providing immediate context on where the text fits in the UI.
 - Preview translated text directly in the user interface to solicit feedback before production.
 
 ### 4. Maintain Consistency with a Glossary and Style Guide
@@ -97,7 +97,7 @@ When developing for platforms like iOS and Android, similar text often has diffe
 
 OTA updates allow you to instantly publish and update text strings in your iOS and Android apps without resubmitting a new version to the App Store or Google Play.
 
-- Use a mobile Software Development Kit (SDK) like Lokalise's to deliver updates **over the air**.
+- Use a mobile Software Development Kit (SDK) like Lang Q's to deliver updates **over the air**.
 - This significantly speeds up your language rollout process, often making it faster than the app store review cycle.
 
 ### 11. Automate and Centralize Your Localization
