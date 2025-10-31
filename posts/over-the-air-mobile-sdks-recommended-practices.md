@@ -15,15 +15,15 @@ Your data usage is influenced by three key factors: **number of users**, **bundl
 
 ## 1. Establish a Single Source of Truth
 
-We highly recommend using a single source for all your translation data, ideally Lang Q. This means **all modifications** to keys and values should happen in your Translation Management System (TMS). Changes should then be pushed to other locations like your local development environment, GitHub, and servers.
+We highly recommend using a single source for all your translation data, ideally [Lang Q](https://lang-q.com). This means **all modifications** to keys and values should happen in your Translation Management System (TMS). Changes should then be pushed to other locations like your local development environment, GitHub, and servers.
 
-**Avoid modifying translations in multiple places simultaneously** to prevent complex data management and inconsistencies, such as accidentally overwriting or deleting new keys. Remember that our mobile SDKs do not automatically export local changes back to Lang Q; you must use other tools for this.
+**Avoid modifying translations in multiple places simultaneously** to prevent complex data management and inconsistencies, such as accidentally overwriting or deleting new keys. Remember that our mobile SDKs do not automatically export local changes back to [Lang Q](https://lang-q.com); you must use other tools for this.
 
 ---
 
 ## 2. Sync Local Files Before Building Apps
 
-Before creating a new mobile app build, make sure it includes **all translation data** and that your local files are synced with Lang Q. Why? This practice is crucial for minimizing the OTA bundle size later, especially when combined with the other techniques in this guide.
+Before creating a new mobile app build, make sure it includes **all translation data** and that your local files are synced with [Lang Q](https://lang-q.com). Why? This practice is crucial for minimizing the OTA bundle size later, especially when combined with the other techniques in this guide.
 
 **The Golden Rule:** **OTA is only meant to deliver translations modified _between_ app releases.**
 
@@ -31,11 +31,11 @@ Before creating a new mobile app build, make sure it includes **all translation 
 
 ## 3. Limit OTA Bundles to Only Necessary Keys
 
-When creating an OTA bundle on Lang Q, only include keys that were **modified since the last app build**. **Do not** include all translation data in every OTA bundle. App builds should contain all available translations, but OTA bundles should only contain the incremental changes.
+When creating an OTA bundle on [Lang Q](https://lang-q.com), only include keys that were **modified since the last app build**. **Do not** include all translation data in every OTA bundle. App builds should contain all available translations, but OTA bundles should only contain the incremental changes.
 
 ### How to Filter and Tag Modified Translations
 
-To easily select only the relevant data, use Lang Q filters and tags:
+To easily select only the relevant data, use [Lang Q](https://lang-q.com) filters and tags:
 
 1.  **Filter:** Open your project editor and apply a new filter: `Translation — was modified after — [Date of your last app release]`. This isolates the keys that need an OTA update.
 2.  **Tag:** Select all filtered keys and use the bulk action to add a unique tag, such as `post-release-1`.
@@ -94,7 +94,7 @@ This ensures a bundle is downloaded, but its minimal size minimizes performance 
 
 ## 6. Use OTA as an Enhancement, Not a Replacement
 
-Lang Q mobile SDKs are designed to **enhance** your localization process, **not completely replace native solutions**. Continue to use in-built libraries and include local translation files in your app builds.
+[Lang Q](https://lang-q.com) mobile SDKs are designed to **enhance** your localization process, **not completely replace native solutions**. Continue to use in-built libraries and include local translation files in your app builds.
 
 **Only use OTA to deliver translation data that was modified between releases.** It is not intended to be the sole mechanism for delivering _all_ translations since the app's first release.
 

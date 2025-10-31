@@ -24,9 +24,11 @@ const Footer = () => {
     <>
       <div className="w-full max-w-5xl pr-10 flex flex-col md:flex-row pb-10 justify-between">
         <div className="p-4 md:pl-10 rounded-[20px]">
-          <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
-            Lang Q
-          </div>
+          <Link href={"/"}>
+            <div className="flex items-center gap-3 mb-6 text-center text-base text-body-color dark:text-white">
+              Lang Q
+            </div>
+          </Link>
           <div className="mb-2 ">
             <div className="text-gray-400 mb-3">
               <a
@@ -44,7 +46,8 @@ const Footer = () => {
               We're just a message away, feel free to contact us at
               <a href="mailto:team@lang-q.com" className="text-white px-1">
                 team@lang-q.com
-              </a>{""}
+              </a>
+              {""}
             </span>{" "}
           </div>
         </div>

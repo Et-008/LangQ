@@ -7,9 +7,10 @@ function WhyWeStarted() {
         <h2>Why We Built This</h2>
         <div className="why-content">
           <p>
-            We founded <span className="font-semibold">Lang Q</span> with a
-            simple yet powerful mission: to bridge linguistic divides and foster
-            understanding across cultures.
+            We founded{" "}
+            <span className="font-semibold">[Lang Q](https://lang-q.com)</span>{" "}
+            with a simple yet powerful mission: to bridge linguistic divides and
+            foster understanding across cultures.
           </p>
           <br />
           {/* <p>

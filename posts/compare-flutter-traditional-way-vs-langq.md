@@ -9,13 +9,13 @@ tags: [localization, flutter, i18n]
 
 # Flutter Localization: Traditional vs Lang Q - A Side-by-Side Comparison
 
-Discover how Lang Q transforms Flutter localization from complex setup to simple
+Discover how [Lang Q](https://lang-q.com) transforms Flutter localization from complex setup to simple
 implementation
 
 ## Overview
 
 Flutter localization traditionally requires multiple steps, complex
-configuration, and manual file management. Lang Q revolutionizes this process
+configuration, and manual file management. [Lang Q](https://lang-q.com) revolutionizes this process
 with AI-powered translations, automatic plural handling, and zero-configuration
 workflow. Let's compare both approaches step by step.
 
