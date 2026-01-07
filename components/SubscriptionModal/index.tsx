@@ -46,8 +46,7 @@ const SubscriptionModal = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          accountId:
-            "YXJ1bmV0MDAxQGdtYWlsLmNvbQ==.b7adf66e4c11887795c1ff2c438f1419",
+          accountId: process.env.NEXT_PUBLIC_MARK_EXEC_ACCOUNT_ID || "",
         },
         body: JSON.stringify({
           email: emailInput?.value,
