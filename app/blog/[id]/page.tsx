@@ -9,6 +9,7 @@ import { Blog } from "@/types/blog";
 
 import BlogContent from "./blogContent";
 import { getSortedPostsData } from "../../../lib/posts";
+import SubscriptionModal from "@/components/SubscriptionModal";
 // import markdownStyles from "./markdown.module.css";
 
 // export const metadata: Metadata = {
@@ -409,6 +410,7 @@ const BlogDetailsPage = async ({ params }: any) => {
           </div>
         </div>
       </section>
+      <SubscriptionModal />
     </>
   );
 };

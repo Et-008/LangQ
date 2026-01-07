@@ -3,6 +3,7 @@ import SingleBlog from "@/components/Blog/SingleBlog";
 import { getSortedPostsData } from "../../lib/posts";
 
 import { Metadata } from "next";
+import SubscriptionModal from "@/components/SubscriptionModal";
 
 export const metadata: Metadata = {
   title: "Lang Q | Articles & Insights on Flutter Localization",
@@ -105,6 +106,7 @@ const Blog = async () => {
           </div> */}
         </div>
       </section>
+      <SubscriptionModal />
     </>
   );
 };
