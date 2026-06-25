@@ -193,12 +193,24 @@ Description: {scraped["description"]}
 """
 
 
+def validate_model(client: Client, model: str):
+    try:
+        models = client.list()
+        available = [m.model for m in models.models]
+        if not any(model in m for m in available):
+            print(f"❌ Model '{model}' not found on server.")
+            print(f"   Available models: {available}")
+            sys.exit(1)
+        print(f"✅ Model confirmed available")
+    except Exception as e:
+        print(f"⚠️  Could not verify model (server may still work): {e}")
+
 def call_ollama(scraped: dict, base_url: str, api_key: str, model: str) -> str:
-    print(f"Args received {base_url} {api_key} {model}")
     client = Client(
         host=base_url,
         headers={"Authorization": f"Bearer {api_key}"}
     )
+    validate_model(client, model)
 
     prompt = build_prompt(scraped)
 
