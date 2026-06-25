@@ -194,6 +194,7 @@ Description: {scraped["description"]}
 
 
 def call_ollama(scraped: dict, base_url: str, api_key: str, model: str) -> str:
+    print(f"Args received {base_url} {api_key} {model}")
     client = Client(
         host=base_url,
         headers={"Authorization": f"Bearer {api_key}"}
