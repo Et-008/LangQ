@@ -14,6 +14,7 @@ import argparse
 import os
 import re
 import sys
+from ollama import Client
 from datetime import datetime
 
 import requests
@@ -192,26 +193,30 @@ Description: {scraped["description"]}
 """
 
 
-def call_ollama(scraped: dict, base_url: str, model: str) -> str:
+def call_ollama(scraped: dict, base_url: str, api_key: str, model: str) -> str:
+    client = Client(
+        host=base_url,
+        headers={"Authorization": f"Bearer {api_key}"}
+    )
+
     prompt = build_prompt(scraped)
 
-    payload = {
-        "model":  model,
-        "prompt": prompt,
-        "stream": False,
-        "options": {
-            "temperature": 0.7,
-            "num_predict": 4096,
-        },
-    }
-
-    resp = requests.post(
-        f"{base_url.rstrip('/')}/api/generate",
-        json=payload,
-        timeout=300,
+    response = client.chat(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are a professional content writer for Lang Q. "
+                    "Always output raw Markdown only — no code fences, no commentary."
+                )
+            },
+            {"role": "user", "content": prompt}
+        ],
+        options={"temperature": 0.7, "num_predict": 4096}
     )
-    resp.raise_for_status()
-    return resp.json().get("response", "")
+
+    return response.message.content
 
 
 # ---------------------------------------------------------------------------
@@ -263,9 +268,10 @@ def main():
 
     base_url = os.environ.get("OLLAMA_BASE_URL", "").rstrip("/")
     model    = os.environ.get("OLLAMA_MODEL", "")
+    api_key  = os.environ.get("OLLAMA_API_KEY", "")
 
-    if not base_url or not model:
-        print("ERROR: OLLAMA_BASE_URL and OLLAMA_MODEL environment variables must be set.", file=sys.stderr)
+    if not base_url or not model or not api_key:
+        print("ERROR: OLLAMA_BASE_URL, OLLAMA_API_KEY and OLLAMA_MODEL environment variables must be set.", file=sys.stderr)
         sys.exit(1)
 
     # Step 1 — Scrape
@@ -276,7 +282,7 @@ def main():
 
     # Step 2 — Rephrase
     print(f"🤖  Rephrasing via {model} ...")
-    raw_md = call_ollama(scraped, base_url, model)
+    raw_md = call_ollama(scraped, base_url, api_key, model)
 
     # Step 3 — Post-process
     print("✨  Post-processing ...")
