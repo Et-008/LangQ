@@ -139,9 +139,10 @@ Rewrite and rephrase the article below into a fresh, original, well-structured b
 RULES
 =====
 1. Replace EVERY occurrence of "Lokalise" (any casing/form) with "Lang Q".
-2. Remove all author names, "written by", "published by", author bios, and profile references.
-3. Remove all hyperlinks — keep the link text if it adds meaning, discard the URL entirely.
-4. Output ONLY raw Markdown — no code fences, no preamble, no explanation.
+2. The FIRST occurrence of "Lang Q" in the body content (not the frontmatter, not the author name) must be a Markdown link: [Lang Q](https://lang-q.com). Do not link every occurrence — only the first mention in the body.
+3. Remove all author names, "written by", "published by", author bios, and profile references.
+4. Remove all hyperlinks — keep the link text if it adds meaning, discard the URL entirely.
+5. Output ONLY raw Markdown — no code fences, no preamble, no explanation.
 
 OUTPUT FORMAT
 =============
@@ -231,6 +232,43 @@ def call_ollama(scraped: dict, base_url: str, api_key: str, model: str) -> str:
 
     return response.message.content
 
+def linkify_langq(md: str, max_links: int = 1) -> str:
+    """
+    Turn plain 'Lang Q' mentions in the body into markdown links,
+    skipping: frontmatter, headings, already-linked text, and the
+    fixed author name ('Lang Q Team').
+    """
+    # Split frontmatter from body so we never touch the YAML block
+    parts = md.split("---", 2)
+    if len(parts) < 3:
+        return md  # no frontmatter found, bail out safely
+    frontmatter, body = parts[1], parts[2]
+
+    link_count = 0
+
+    def replace(match):
+        nonlocal link_count
+        if link_count >= max_links:
+            return match.group(0)
+        link_count += 1
+        return f"[{match.group(0)}](https://lang-q.com)"
+
+    # Match "Lang Q" but not:
+    #  - when followed by "Team" (author name)
+    #  - when already inside [Lang Q](...) or [Lang Q ...]
+    #  - inside heading lines starting with # (avoid linking headings)
+    lines = body.split("\n")
+    for i, line in enumerate(lines):
+        if line.lstrip().startswith("#"):
+            continue  # skip headings
+        if link_count >= max_links:
+            break
+        pattern = re.compile(r'(?<!\[)\bLang Q\b(?!\])(?!\(https)(?! Team)')
+        lines[i] = pattern.sub(replace, line, count=max_links - link_count)
+    body = "\n".join(lines)
+
+    return f"---{frontmatter}---{body}"
+
 
 # ---------------------------------------------------------------------------
 # Step 3 — Post-process
@@ -244,6 +282,8 @@ def post_process(md: str) -> str:
     # Safety pass: catch any leftover Lokalise mentions
     for pattern, replacement in COMPANY_REPLACEMENTS:
         md = re.sub(pattern, replacement, md)
+
+    md = linkify_langq(md, max_links=1)
 
     return md.strip()
 
