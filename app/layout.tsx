@@ -8,6 +8,7 @@ import LocationPage from "@/components/Location";
 import "./globals.css";
 // import MouseParticles from "@/components/ui/mousePArticles";
 import CanvasParticles from "@/components/ui/particleCanvas";
+import CrispInitializer from "@/components/CrispInitializer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -146,6 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           enableSystem
           disableTransitionOnChange
         >
+          <CrispInitializer />
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-5 items-center">
               <Navigation />
