@@ -2,6 +2,7 @@
 
 import { createPortal } from "react-dom";
 import { Input } from "../ui/input";
+import { isbot } from 'isbot';
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
@@ -12,16 +13,30 @@ const SubscriptionModal = () => {
 
   // Optional: Show the modal after a delay or based on a condition
   useEffect(() => {
+    // 1. Check if it's a known bot via User-Agent matching
+    const uaBot = isbot(navigator.userAgent);
+
+    // 2. Check for automation flags (e.g., Selenium, Puppeteer, Playwright)
+    const automationBot = navigator.webdriver;
+
+    // 3. Screen property validation (Headless bots often have 0x0 screens)
+    const headlessBot = window.screen.width === 0 && window.screen.height === 0;
+
     if (timer) {
       clearTimeout(timer);
     }
-    timer = setTimeout(() => {
-      // Check if the user has already seen the modal (e.g., using local storage)
-      const hasSeenModal = sessionStorage.getItem("hasSeenNewsletterModal");
-      if (!hasSeenModal) {
-        setIsOpen(true);
-      }
-    }, 2000); // Show after 2 seconds
+
+    if (uaBot || automationBot || headlessBot) {
+      console.log("Bot crawling the page!")
+    } else {
+      timer = setTimeout(() => {
+        // Check if the user has already seen the modal (e.g., using local storage)
+        const hasSeenModal = sessionStorage.getItem("hasSeenNewsletterModal");
+        if (!hasSeenModal) {
+          setIsOpen(true);
+        }
+      }, 2000); // Show after 2 seconds
+    }
 
     return () => clearTimeout(timer);
   }, []);

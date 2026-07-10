@@ -37,7 +37,8 @@
     "reactjs-popup": "^2.0.6",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "together-ai": "^0.15.1"
+    "together-ai": "^0.15.1",
+    "isbot": "^5.2.0"
   },
   "devDependencies": {
     "@types/node": "22.10.2",
