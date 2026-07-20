@@ -20,20 +20,20 @@ const PrimaryBlog = ({ blog }: { blog: Blog }) => {
           className="relative block aspect-[37/22] lg:w-1/2"
         >
           <Image src={image} alt="image" fill />
-        </Link>
-        <div className="relative min-h-[200px] lg:max-h-[350px] p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-          <span className="absolute left-4 top-1 z-20 inline-flex items-center justify-center">
+          <span className="absolute left-[20px] bottom-[2px] z-20 inline-flex items-center flex-wrap gap-2">
             {tags?.map((tag) => {
               return (
                 <p
                   key={tag}
-                  className="rounded-full px-2 py-1 bg-card text-xs font-semibold capitalize text-white mr-1"
+                  className="rounded-full px-2 py-1 bg-card text-xs font-semibold capitalize text-white"
                 >
                   {tag}
                 </p>
               );
             })}
           </span>
+        </Link>
+        <div className="relative min-h-[200px] lg:max-h-[350px] p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <h3 className="mt-2 mb-4 text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl">
             <Link
               href={`/blog/${id}`}
