@@ -12,12 +12,12 @@ const config = {
   prefix: "",
   theme: {
     screens: {
-      xs: "480px", // Extra small phones
-      sm: "640px", // Small devices (e.g. phones)
-      md: "768px", // Medium devices (e.g. tablets)
-      lg: "1024px", // Large devices (e.g. laptops)
-      xl: "1280px", // Extra large (e.g. desktops)
-      "2xl": "1536px", // 2K+ screens
+      xs: {'max': "480px"}, // Extra small phones
+      sm: {'max': "640px"}, // Small devices (e.g. phones)
+      md: {'max': "768px"}, // Medium devices (e.g. tablets)
+      lg: {'max': "1024px"}, // Large devices (e.g. laptops)
+      xl: {'max': "1280px"}, // Extra large (e.g. desktops)
+      "2xl": {'max': "1536px"}, // 2K+ screens
     },
     container: {
       center: true,
