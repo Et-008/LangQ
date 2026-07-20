@@ -21,8 +21,6 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           className="relative block aspect-[37/22] w-full"
         >
           <Image src={image} alt="image" fill />
-        </Link>
-        <div className="relative min-h-[200px] max-h-[250px] p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <span className="absolute left-[20px] bottom-[2px] z-20 inline-flex items-center flex-wrap gap-2">
             {tags?.map((tag) => {
               return (
@@ -35,6 +33,8 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               );
             })}
           </span>
+        </Link>
+        <div className="relative min-h-[200px] max-h-[250px] p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <h3 className="line-clamp-2 mt-2 mb-4 text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl">
             <Link
               prefetch={false}
