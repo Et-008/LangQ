@@ -22,12 +22,12 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           <Image src={image} alt="image" fill />
         </Link>
         <div className="relative min-h-[200px] max-h-[250px] p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-          <span className="absolute left-4 top-1 z-20 inline-flex items-center justify-center">
+          <span className="absolute left-[20px] bottom-[2px] z-20 inline-flex items-center flex-wrap gap-2">
             {tags?.map((tag) => {
               return (
                 <p
                   key={tag}
-                  className="rounded-full px-2 py-1 bg-card text-xs font-semibold text-white mr-1"
+                  className="rounded-full px-2 py-1 bg-card text-xs font-semibold capitalize text-white"
                 >
                   {tag}
                 </p>
