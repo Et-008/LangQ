@@ -3,7 +3,7 @@ title: "Translation vs. Localization: Understanding the Key Differences"
 description: "Explore the critical distinctions between translation and localization and learn how to maintain quality through effective audit trails."
 author: { name: "LangQ Team", designation: "Editor" }
 date: "2026-07-20"
-image: /images/translation-vs-localization-guide.jpeg
+image: /images/translation-vs-localization-guide.png
 tags: ["Localization", "Translation", "Quality Assurance", "Global Expansion"]
 ---
 # 🔑 Translation and Localization: What is the Difference?
