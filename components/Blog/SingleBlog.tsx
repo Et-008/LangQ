@@ -16,6 +16,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
     <>
       <div className="group relative overflow-hidden rounded-lg bg-white shadow-one duration-300 hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark">
         <Link
+          prefetch={false}
           href={`/blog/${id}`}
           className="relative block aspect-[37/22] w-full"
         >
@@ -36,6 +37,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           </span>
           <h3 className="line-clamp-2 mt-2 mb-4 text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl">
             <Link
+              prefetch={false}
               href={`/blog/${id}`}
               // className="block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
             >

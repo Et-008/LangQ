@@ -75,6 +75,7 @@ export default function SignUpUserSteps() {
           Head over to the{" "}
           <Link
             href="/sign-up"
+            prefetch={false}
             className="font-bold hover:underline text-foreground/80"
           >
             Sign up
