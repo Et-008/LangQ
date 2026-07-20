@@ -152,9 +152,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div className="flex-1 w-full flex flex-col gap-5 items-center">
               <Navigation />
               <div
-                className={`${User ? "" : ""} w-full grow p-5 xs:p-2 flex justify-center`}
+                className={`${User ? "" : ""} w-full grow p-2 md:p-5 flex justify-center`}
               >
-                <div className="w-full flex flex-col gap-5 p-5 xs:p-2 grow">
+                <div className="w-full flex flex-col gap-5 p-2 md:p-5 grow">
                   {/* <MouseParticles /> */}
                   {/* <CanvasParticles /> */}
                   {children}
